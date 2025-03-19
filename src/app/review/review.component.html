@@ -1,0 +1,16 @@
+<p>review works!</p>
+<div class="review-page">
+    <h2>User Reviews</h2>
+    <ul *ngIf="ratings.length > 0; else noReviews">
+      <li *ngFor="let rating of ratings">
+        <strong>{{ rating.user_name }}</strong> ({{ rating.rating }}★)  
+        <p>{{ rating.comment }}</p>
+        <span>{{ rating.created_at | date:'medium' }}</span>
+      </li>
+    </ul>
+  
+    <ng-template #noReviews>
+      <p>No reviews yet. Be the first to rate!</p>
+    </ng-template>
+  </div>
+  

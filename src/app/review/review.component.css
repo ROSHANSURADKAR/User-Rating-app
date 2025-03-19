@@ -1,0 +1,57 @@
+.review-page {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #f9f9f9;
+    border-left: 5px solid #007bff;
+}
+
+li strong {
+    color: #007bff;
+    font-size: 18px;
+}
+
+li p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+li span {
+    font-size: 14px;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+
+p {
+    text-align: center;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .review-page {
+        width: 90%;
+        padding: 15px;
+    }
+}
