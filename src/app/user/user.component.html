@@ -1,0 +1,19 @@
+
+
+<div class="uaer" >
+    <h1>User Ratings</h1>
+  
+    <form (submit)="submitRating(); $event.preventDefault()">
+     Enter Name:- <input type="text" placeholder="Your Name" [(ngModel)]="userName" name="userName" required />
+      Rating:- <input type="number" placeholder="Rating (1-5)" [(ngModel)]="rating" name="rating" min="1" max="5" required />
+     Comments:- <textarea placeholder="Comments" [(ngModel)]="comments" name="comments"></textarea>
+      <button type="submit">Submit Rating</button>
+    </form>
+  
+    <h2>All Ratings</h2>
+    <ul>
+      <li *ngFor="let rating of ratings">
+        <strong>{{ rating.user_name }}</strong><br> ({{ rating.rating }}/5) - {{ rating.comments }}
+      </li>
+    </ul>
+  </div>
