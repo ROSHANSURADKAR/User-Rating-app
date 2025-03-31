@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 <div class="uaer" >
     <h1>User Ratings</h1>
   
@@ -7,6 +8,15 @@
      Enter Name:- <input type="text" placeholder="Your Name" [(ngModel)]="userName" name="userName" required />
       Rating:- <input type="number" placeholder="Rating (1-5)" [(ngModel)]="rating" name="rating" min="1" max="5" required />
      Comments:- <textarea placeholder="Comments" [(ngModel)]="comments" name="comments"></textarea>
+=======
+<div style="text-align: center;">
+    <h1>User Ratings</h1>
+  
+    <form (submit)="submitRating(); $event.preventDefault()">
+     Enter Name <input type="text" placeholder="Your Name" [(ngModel)]="userName" name="userName" required />
+      Rating <input type="number" placeholder="Rating (1-5)" [(ngModel)]="rating" name="rating" min="1" max="5" required />
+     Comments <textarea placeholder="Comments" [(ngModel)]="comments" name="comments"></textarea>
+>>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
       <button type="submit">Submit Rating</button>
     </form>
   

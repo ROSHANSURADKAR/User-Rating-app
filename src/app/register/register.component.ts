@@ -28,7 +28,11 @@ export class RegisterComponent {
   }
 
   verifyOtp() {
+<<<<<<< HEAD
     this.apiService. verifyUserOtp(this.email, this.otp).subscribe(
+=======
+    this.apiService.verifyOtp(this.email, this.otp).subscribe(
+>>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
       (response) => {
         alert("Registration Successful!");
         this.router.navigate(['/login']);

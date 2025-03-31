@@ -18,4 +18,8 @@ logout() {
   alert('Logged out successfully!');
   this.router.navigate(['/login']); // 🔥 Redirect to Login Page
 }
+<<<<<<< HEAD
 }0
+=======
+}
+>>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
