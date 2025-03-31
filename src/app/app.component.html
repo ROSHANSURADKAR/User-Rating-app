@@ -5,5 +5,8 @@
   <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a> <br>
   <button *ngIf="isLoggedIn()" (click)="logout()">LogOut</button>
 </nav>
-
+<nav>
+  <a routerLink="/admin-login">admin login</a>
+  <a routerLink="/admin-register">admin Register</a>
+</nav>
 <router-outlet></router-outlet>
