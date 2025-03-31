@@ -52,6 +52,6 @@ export class ApiService {
 
   // Admin login
   adminLogin(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/admins/login`, { email, password });
+    return this.http.post(`${this.apiUrl}/admin/login`, { email, password });
   }
 }

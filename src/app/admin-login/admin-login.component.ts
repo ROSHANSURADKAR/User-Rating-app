@@ -11,13 +11,16 @@ export class AdminLoginComponent {
   email = '';
   password = '';
 
-  constructor(private adminService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   login() {
-    this.adminService.login(this.email, this.password).subscribe(response => {
-      alert(response.message);
-      localStorage.setItem('adminToken', response.token);
-      this.router.navigate(['/admin-dashboard']);
+    this.apiService.adminLogin(this.email, this.password).subscribe(response => {
+      if (response.success) {
+        localStorage.setItem('adminToken', response.token); // Store token
+        this.router.navigate(['/admin-dashboard']); // Redirect to dashboard
+      } else {
+        alert('Invalid credentials');
+      }
     });
   }
 }

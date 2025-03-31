@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 
 
 
@@ -22,6 +23,7 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
     RegisterComponent,
     AdminLoginComponent,
     AdminRegisterComponent,
+    AdminDashbordComponent,
     
     
   ],
