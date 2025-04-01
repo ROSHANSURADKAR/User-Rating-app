@@ -1,26 +1,14 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
 .review-page {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
     background: #fff;
-<<<<<<< HEAD
-    box-shadow: 0 0 10px rgba(253, 1, 1, 0.918);
-=======
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
->>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Keep the desired box-shadow */
     border-radius: 8px;
     font-family: Arial, sans-serif;
 }
 
 h2 {
-<<<<<<< HEAD
-    background-color: aqua;
-=======
->>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
     text-align: center;
     color: #333;
 }

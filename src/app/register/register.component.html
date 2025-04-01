@@ -2,14 +2,9 @@
   <h2>Register</h2>
   <input type="email" [(ngModel)]="email" placeholder="Enter email" required />
   <input type="password" [(ngModel)]="password" placeholder="Enter password" required />
-<<<<<<< HEAD
-  <button (click)="register()" >Register</button>
-  <p>Already have an account? <a (click)="goToLogin()" style="color: blue;">Login here</a></p> 
-=======
   <button (click)="register()">Register</button>
-  <p>Already have an account? <a (click)="goToLogin()">Login here</a></p> 
->>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
-  </div>
+  <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
+</div>
 
 <div *ngIf="isOtpSent">
   <h2>Verify OTP</h2>

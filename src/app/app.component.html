@@ -1,19 +1,13 @@
 <nav>
+  <a routerLink="/admin-login">Admin Login</a> <br>
+  <a routerLink="/admin-register">Admin Register</a> <br>
   <a routerLink="/login" *ngIf="!isLoggedIn()">Login</a> <br>
   <a routerLink="/register" *ngIf="!isLoggedIn()">Register</a> <br>
   <a routerLink="/user" *ngIf="isLoggedIn()">Submit Rating</a> <br>
   <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a> <br>
-<<<<<<< HEAD
-  <button *ngIf="isLoggedIn()" (click)="logout()">LogOut</button>
-</nav>
-<nav>
-  <a routerLink="/admin-login">admin login</a>
-  
-  <a routerLink="/admin-register">admin Register</a>
-</nav>
-=======
   <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
 </nav>
 
->>>>>>> d29f3c82476a56b15527de2716cae33a24af2639
+
+
 <router-outlet></router-outlet>
