@@ -1,28 +1,35 @@
 <div class="container">
-    <h2>Admin Registration</h2>
-  
-    <form (ngSubmit)="register()" *ngIf="!showOtpInput">
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="name" name="name" required>
-  
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
-  
-      <button type="submit">Register</button>
+  <h2>Admin Register</h2>
+
+  <!-- Registration Form -->
+  <form *ngIf="!registrationSuccess" (ngSubmit)="registerAdmin()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+
+    <button type="submit">Register</button>
+
+    <p *ngIf="registrationMessage" class="error-message">
+      {{ registrationMessage }}
+    </p>
+  </form>
+
+  <!-- OTP Verification Form -->
+  <div *ngIf="showOtpInput">
+    <h3>Verify OTP</h3>
+    <form (ngSubmit)="verifyOtp()">
+      <label for="otp">Enter OTP:</label>
+      <input type="text" id="otp" [(ngModel)]="otp" name="otp" required />
+
+      <button type="submit">Verify OTP</button>
     </form>
-  
-    <!-- OTP Verification Section -->
-    <div *ngIf="showOtpInput">
-      <h2>Verify OTP</h2>
-      <form (ngSubmit)="verifyOtp()">
-        <label for="otp">Enter OTP:</label>
-        <input type="text" id="otp" [(ngModel)]="otp" name="otp" required>
-  
-        <button type="submit">Verify OTP</button>
-      </form>
-    </div>
   </div>
-  
+</div>

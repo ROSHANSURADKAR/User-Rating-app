@@ -25,8 +25,8 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/ratings`, data);
   }
 
-  // User registration
-  register(email: string, password: string): Observable<any> {
+  // User Registration
+  registerUser(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/register`, { email, password });
   }
 
@@ -36,22 +36,24 @@ export class ApiService {
   }
 
   // User login
-  login(email: string, password: string): Observable<any> {
+  userLogin(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/login`, { email, password });
   }
 
-  // Admin registration
-  registerAdmin(name: string, email: string, password: string): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/admins/register`, { name, email, password });
+  // Admin Registration
+  registerAdmin(name: string, email: string, password: string) {
+    return this.http.post(`${this.apiUrl}/admins/register`, { name, email, password });
   }
+  
 
-  // Admin OTP verification
+  // Admin OTP Verification
   verifyAdminOtp(email: string, otp: string): Observable<any> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/admins/verify-otp`, { email, otp });
+    return this.http.post(`${this.apiUrl}/admins/verify-otp`, { email, otp });
   }
-
-  // Admin login
-  adminLogin(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/admin/login`, { email, password });
+  
+  // Admin Login
+  adminLogin(email: string, password: string) {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/admin/login`, { email, password });
   }
+  
 }

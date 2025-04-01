@@ -1,12 +1,15 @@
-<div class="dashboard">
-    <h2>Admin Dashboard</h2>
-    <button class="logout-btn" (click)="logout()">Logout</button>
-  
+<div class="container">
+  <h2>Admin Dashboard</h2>
+
+  <button (click)="logout()">Logout</button>
+
+  <!-- User Ratings Table -->
+  <div *ngIf="users.length > 0; else noUsers">
+    <h3>User Ratings</h3>
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>User Name</th>
+          <th>Name</th>
           <th>Email</th>
           <th>Rating</th>
           <th>Actions</th>
@@ -14,24 +17,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.rating }}</td>
           <td>
-            <button (click)="selectUser(user)">Update</button>
             <button (click)="deleteRating(user.id)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-  
-    <!-- Update Rating Modal -->
-    <div *ngIf="selectedUser" class="modal">
-      <h3>Update Rating for {{ selectedUser.name }}</h3>
-      <input type="number" [(ngModel)]="updatedRating" min="1" max="5">
-      <button (click)="updateRating()">Save</button>
-      <button (click)="selectedUser = null">Cancel</button>
-    </div>
   </div>
-  
+
+  <!-- No Users Message -->
+  <ng-template #noUsers>
+    <p>No ratings found.</p>
+  </ng-template>
+</div>

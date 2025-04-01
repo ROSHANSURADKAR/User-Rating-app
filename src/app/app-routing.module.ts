@@ -5,7 +5,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
-
+import { AdminAuthGuard } from './adminauth.guard';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
@@ -15,13 +15,14 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'reviews', component: ReviewComponent },
-
+  { path: 'admin-dashboard', component: AdminDashbordComponent, canActivate: [AdminAuthGuard] },
+  { path: 'admin-register', component: AdminRegisterComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
+ 
   // Default redirect route for user login
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default to login page
   
-  { path: 'admin-dashboard', component: AdminDashbordComponent },
-  { path: 'admin-register', component: AdminRegisterComponent },
-  { path: 'admin-login', component: AdminLoginComponent }
+ 
 ];
 
 @NgModule({

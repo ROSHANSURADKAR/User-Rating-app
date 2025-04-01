@@ -16,7 +16,7 @@ export class RegisterComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
   register() {
-    this.apiService.register(this.email, this.password).subscribe(
+    this.apiService.registerUser(this.email, this.password).subscribe(
       (response) => {
         alert("OTP Sent! Check your email.");
         this.isOtpSent = true;

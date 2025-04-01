@@ -14,7 +14,7 @@ export class LoginComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
   login() {
-    this.apiService.login(this.email, this.password).subscribe(
+    this.apiService.userLogin(this.email, this.password).subscribe(
       (response) => {
         alert("Login Successful!");
         localStorage.setItem('isLoggedIn', 'true');
