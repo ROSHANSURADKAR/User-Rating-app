@@ -1,13 +1,98 @@
-.logout-btn {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    float: right;
+/* Container Style */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Logout Button */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Table Style */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+td {
+  background-color: #fff;
+}
+
+/* Table Row Hover */
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Delete Button Style */
+button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #c82333;
+}
+
+/* No Users Section */
+ng-template {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.2em;
+  color: #888;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
   }
-  
-  .logout-btn:hover {
-    background-color: darkred;
+
+  table {
+    font-size: 0.9em;
   }
-  
+
+  th, td {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
