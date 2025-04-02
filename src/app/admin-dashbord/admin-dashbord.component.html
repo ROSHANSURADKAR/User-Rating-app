@@ -3,14 +3,14 @@
 
   <button (click)="logout()">Logout</button>
 
-  <!-- User Ratings Table -->
+ 
   <div *ngIf="users.length > 0; else noUsers">
     <h3>User Ratings</h3>
     <table>
       <thead>
         <tr>
           <th>Name</th>
-          <th>Email</th>
+          <th>comments</th>
           <th>Rating</th>
           <th>Actions</th>
         </tr>
@@ -18,7 +18,7 @@
       <tbody>
         <tr *ngFor="let user of users">
           <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
+          <td>{{ user.comments }}</td>
           <td>{{ user.rating }}</td>
           <td>
             <button (click)="deleteRating(user.id)">Delete</button>
@@ -28,7 +28,7 @@
     </table>
   </div>
 
-  <!-- No Users Message -->
+
   <ng-template #noUsers>
     <p>No ratings found.</p>
   </ng-template>

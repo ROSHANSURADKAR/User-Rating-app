@@ -11,12 +11,12 @@
     <button type="submit">Login</button>
   </form>
 
-  <!-- Display error message if login fails -->
+ 
   <p *ngIf="loginMessage" class="error-message">
     {{ loginMessage }}
   </p>
 
-  <!-- Redirect to the Register page if the user doesn't have an account -->
+ 
   <div>
     <p>Don't have an account? <a routerLink="/admin-register">Register here</a></p>
   </div>
