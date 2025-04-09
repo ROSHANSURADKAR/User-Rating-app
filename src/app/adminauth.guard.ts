@@ -5,23 +5,16 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
   providedIn: 'root',
 })
 export class AdminAuthGuard implements CanActivate {
-
   constructor(private router: Router) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    // Check if the admin token is available in localStorage
-    const adminToken = localStorage.getItem('adminToken');
-    
-    // If token exists, allow access to the route
-    if (adminToken) {
-      return true;
+  canActivate(): boolean {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      return true; // ✅ User is logged in, allow access
+    } else {
+      alert("You need to login first!");
+      this.router.navigate(['/admin-login']); // 🔥 Redirect to Login Page
+      return false;
     }
-
-    // If no token, redirect to the admin login page
-    this.router.navigate(['/admin-login']);
-    return false;
   }
+  
 }

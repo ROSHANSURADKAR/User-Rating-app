@@ -41,19 +41,15 @@ export class ApiService {
   }
 
   // Admin Registration
-  registerAdmin(name: string, email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/admin/register`, { name, email, password });
+  adminLogin(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/login`, { email, password });
   }
-  
 
-  // Admin OTP Verification
-  verifyAdminOtp(email: string, otp: string): Observable<any> {
+  adminRegister(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/register`, data);
+  }
+
+  verifyOtp(email: string, otp: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/admin/verify-otp`, { email, otp });
   }
-  
-  // Admin Login
-  adminLogin(email: string, password: string) {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/admin/login`, { email, password });
-  }
-  
 }

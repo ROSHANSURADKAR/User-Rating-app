@@ -9,47 +9,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-register.component.css']
 })
 export class AdminRegisterComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  registrationMessage: string = '';
-  otp: string = '';  // OTP field
-  showOtpInput: boolean = false;  // To show OTP input field after registration
-  registrationSuccess: boolean = false;  // To track registration success
+  name = '';
+  email = '';
+  password = '';
+  otp = '';
+  showOtpBox = false;
+  message = '';
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService) {}
 
   registerAdmin() {
-    if (this.password !== this.confirmPassword) {
-      this.registrationMessage = 'Passwords do not match!';
-      return;
-    }
-
-    // Call the API to register the admin
-    this.apiService.registerAdmin(this.name, this.email, this.password).subscribe(
-      (response) => {
-        alert('Registration successful! An OTP has been sent to your email.');
-        this.registrationSuccess = true;
-        this.showOtpInput = true; // Show OTP input field
+    const adminData = { name: this.name, email: this.email, password: this.password };
+    this.apiService.adminRegister(adminData).subscribe(
+      (response: any) => {
+        this.showOtpBox = true;
+        this.message = response.message;
       },
-      (error) => {
-        this.registrationMessage = 'Registration failed. Please try again.';
-        console.error('Error during registration:', error);
+      (error: any) => {
+        this.message = 'Registration failed';
       }
     );
   }
 
-  // Function to handle OTP verification
   verifyOtp() {
-    this.apiService.verifyAdminOtp(this.email, this.otp).subscribe(
-      (response) => {
-        alert('OTP verified successfully! You can now log in.');
-        this.router.navigate(['/admin-login']); // Redirect to login after successful OTP verification
+    this.apiService.verifyOtp(this.email, this.otp).subscribe(
+      (response: any) => {
+        this.message = 'Admin verified!';
       },
-      (error) => {
-        alert('OTP verification failed. Please try again.');
-        console.error('Error during OTP verification:', error);
+      (error: any) => {
+        this.message = 'OTP verification failed';
       }
     );
   }
