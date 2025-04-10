@@ -2,24 +2,25 @@
   <h2>Admin Registration</h2>
 
   <div *ngIf="!showOtpBox">
-    <label for="name">Name:</label>
-    <input type="text" id="name" [(ngModel)]="name" placeholder="Enter your name" />
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" [(ngModel)]="email" placeholder="Enter your email" />
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="password" placeholder="Enter your password" />
-
+    <input [(ngModel)]="name" placeholder="Name" type="text" required />
+    <br />
+    <input [(ngModel)]="email" placeholder="Email" type="email" required />
+    <br />
+    <input [(ngModel)]="password" placeholder="Password" type="password" required />
+    <br />
     <button (click)="registerAdmin()">Register</button>
   </div>
 
   <div *ngIf="showOtpBox">
-    <label for="otp">Enter OTP:</label>
-    <input type="text" id="otp" [(ngModel)]="otp" placeholder="Enter OTP" />
-
+    <p>{{ message }}</p>
+    <input [(ngModel)]="otp" placeholder="Enter OTP" type="text" />
+    <br />
     <button (click)="verifyOtp()">Verify OTP</button>
   </div>
 
-  <p class="message">{{ message }}</p>
+  
+
+  <div>
+   <p>Already have an account?<a routerLink="/admin-Login">login</a></p> 
+  </div>
 </div>

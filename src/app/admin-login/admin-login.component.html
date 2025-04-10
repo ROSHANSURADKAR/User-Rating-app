@@ -1,11 +1,24 @@
-
-
+<div class="container">
   <h2>Admin Login</h2>
-  <input [(ngModel)]="email" placeholder="Email">
-  <input [(ngModel)]="password" type="password" placeholder="Password">
-  <button (click)="adminLogin()">Login</button>
-  <p *ngIf="loginMessage" class="error">{{ loginMessage }}</p>
-
-  <nav>
-  register first<button (click)="goToRegister()">Register</button>
-</nav>
+ 
+  <form (ngSubmit)="adminLogin()">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required />
+ 
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+ 
+    <button type="submit">Login</button>
+  </form>
+ 
+ 
+  <p *ngIf="loginMessage" class="loginmessage">
+    {{ loginMessage }}
+  </p>
+ 
+ 
+  <div>
+    <p>Don't have an account? <a routerLink="/admin-register">Register here</a></p>
+  </div>
+</div>
+ 

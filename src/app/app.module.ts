@@ -8,9 +8,12 @@ import { ReviewComponent } from './review/review.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
+
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+
+
 
 @NgModule({
   declarations: [

@@ -16,7 +16,7 @@ export class AdminRegisterComponent {
   showOtpBox = false;
   message = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   registerAdmin() {
     const adminData = { name: this.name, email: this.email, password: this.password };
@@ -32,13 +32,18 @@ export class AdminRegisterComponent {
   }
 
   verifyOtp() {
-    this.apiService.verifyOtp(this.email, this.otp).subscribe(
-      (response: any) => {
-        this.message = 'Admin verified!';
+
+    this.apiService. verifyOtp(this.email, this.otp).subscribe(
+
+
+      (response) => {
+        alert("Registration Successful!");
+        this.router.navigate(['/admin-login']);
       },
-      (error: any) => {
-        this.message = 'OTP verification failed';
+      (error) => {
+        alert("OTP Verification Failed!");
       }
     );
   }
+  
 }
