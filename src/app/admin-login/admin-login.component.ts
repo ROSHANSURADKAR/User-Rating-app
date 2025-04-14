@@ -27,9 +27,9 @@ export class AdminLoginComponent {
       (response: any) => {
         // Assuming the response contains a token when login is successful
         if (response.token) {
-          localStorage.setItem('adminToken', response.token);  // Store the token in localStorage
-          this.router.navigate(['/admin-dashboard']);  // Redirect to the admin dashboard
-        } else {
+          localStorage.setItem('adminToken', response.token);
+          this.router.navigate(['/admin-dashboard']);
+        }else {
           this.loginMessage = 'Invalid credentials. Please try again.';
         }
       },

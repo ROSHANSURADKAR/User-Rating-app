@@ -15,8 +15,9 @@ export class AdminDashbordComponent implements OnInit {
 
   ngOnInit() {
     if (!localStorage.getItem('adminToken')) {
-      this.router.navigate(['/admin-login']); // Redirect if not logged in
-    } else {
+      this.router.navigate(['/admin-login']);
+    }
+     else {
       this.loadUsers();
     }
   }

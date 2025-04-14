@@ -10,15 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Fetch all ratings
-  getRatings(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/ratings`);
-  }
-
-  // Delete a rating
-  deleteRating(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/ratings/${id}`);
-  }
+  
 
   // Submit a rating
   submitRating(data: any): Observable<any> {
@@ -39,17 +31,28 @@ export class ApiService {
   userLogin(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/login`, { email, password });
   }
-
-  // Admin Registration
-  adminLogin(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/admin/login`, { email, password });
-  }
-
-  adminRegister(data: any): Observable<any> {
+  adminRegister(data: any) {
     return this.http.post(`${this.apiUrl}/admin/register`, data);
   }
 
-  verifyOtp(email: string, otp: string): Observable<any> {
+  // 🔹 OTP Verification
+  verifyOtp(email: string, otp: string) {
     return this.http.post(`${this.apiUrl}/admin/verify-otp`, { email, otp });
   }
+
+  // 🔹 Admin Login
+  adminLogin(email: string, password: string) {
+    return this.http.post(`${this.apiUrl}/admin/login`, { email, password });
+  }
+
+  // 🔹 Get Ratings for Admin Dashboard
+  getRatings() {
+    return this.http.get<any[]>(`${this.apiUrl}/ratings`);
+  }
+
+  // 🔹 Delete a Rating
+  deleteRating(id: number) {
+    return this.http.delete(`${this.apiUrl}/ratings/${id}`);
+  }
 }
+
