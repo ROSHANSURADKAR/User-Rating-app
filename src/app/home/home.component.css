@@ -6,13 +6,13 @@
   
   h1 {
     font-size: 3rem;
-    color: #2c3e50;
+    color: #0d0d0e;
   }
   
   p {
     font-size: 1.2rem;
     margin-bottom: 30px;
-    color: #7f8c8d;
+    color: #0f1111;
   }
   
   .button-group a {
@@ -39,4 +39,11 @@
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   }
-  
+ .home-container  {
+    background-image: url('https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D');
+    background-size: cover;       
+    background-repeat: no-repeat;
+    background-position: center;  
+    height: 100vh;                
+    margin: 0;
+  }

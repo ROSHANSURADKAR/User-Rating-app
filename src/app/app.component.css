@@ -1,14 +1,11 @@
-/* 🌟 Navigation Bar Styling */
 nav {
-  background-color: #007bff; /* Bright blue background */
-  padding: 10px;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
-  color: white;
+  text-align: center;
+  background-color: #007bff;
+  color: rgb(24, 23, 23);
   text-decoration: none;
   font-size: 18px;
   margin: 10px;
@@ -22,9 +19,8 @@ nav a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* 🌟 Button Styling */
 button {
-  background-color: #28a745; /* Green color */
+  background-color: #28a745; 
   color: white;
   border: none;
   padding: 10px 15px;
@@ -36,12 +32,12 @@ button {
 }
 
 button:hover {
-  background-color: #218838; /* Darker green */
+  background-color: #218838; 
 }
 
-/* 🌟 Add spacing */
+
 br {
-  display: none; /* Removes unnecessary line breaks */
+  display: none; 
 }
 
 @media (max-width: 600px) {
