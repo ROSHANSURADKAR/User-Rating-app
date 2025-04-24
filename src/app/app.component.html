@@ -1,10 +1,5 @@
 <nav>
-  <a routerLink="/admin-login">Admin Login</a> <br>
-  <a routerLink="/admin-dashboard">Admin Dashboard</a> <br>
-
-  <a routerLink="/admin-register">Admin Register</a> <br>
-  <a routerLink="/login" *ngIf="!isLoggedIn()">Login</a> <br>
-  <a routerLink="/register" *ngIf="!isLoggedIn()">Register</a> <br>
+  
   <a routerLink="/user" *ngIf="isLoggedIn()">Submit Rating</a> <br>
   <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a> <br>
   <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>

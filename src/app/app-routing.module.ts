@@ -9,8 +9,10 @@ import { AdminAuthGuard } from './admin-auth.guard';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
@@ -19,8 +21,7 @@ const routes: Routes = [
   { path: 'admin-register', component: AdminRegisterComponent },
   { path: 'admin-login', component: AdminLoginComponent },
  
-  // Default redirect route for user login
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default to login page
+  
   
  
 ];

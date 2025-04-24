@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -26,6 +27,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AdminLoginComponent,
     AdminRegisterComponent,
     AdminDashbordComponent,
+    HomeComponent,
    
   ],
   imports: [

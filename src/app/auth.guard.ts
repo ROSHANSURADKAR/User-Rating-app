@@ -9,10 +9,10 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (localStorage.getItem('isLoggedIn') === 'true') {
-      return true; // ✅ User is logged in, allow access
+      return true; // User is logged in, allow access
     } else {
       alert("You need to login first!");
-      this.router.navigate(['/login']); // 🔥 Redirect to Login Page
+      this.router.navigate(['/login']); // Redirect to Login Page
       return false;
     }
   }
