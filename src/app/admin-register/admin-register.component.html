@@ -2,11 +2,15 @@
   <h2>Admin Registration</h2>
 
   <div *ngIf="!showOtpBox">
-    <input [(ngModel)]="name" placeholder="Name" type="text" required />
+    <input [(ngModel)]="Firstname" placeholder="First Name" type="text" required />
+    <br />
+    <input [(ngModel)]="LastName" placeholder="Last Name" type="text" required />
     <br />
     <input [(ngModel)]="email" placeholder="Email" type="email" required />
-    <br />
+    <br />  
     <input [(ngModel)]="password" placeholder="Password" type="password" required />
+    <br />
+    <input [(ngModel)]="Confirmpassword" placeholder="Confirm password" type="Confirm password" required />
     <br />
     <button (click)="registerAdmin()">Register</button>
   </div>

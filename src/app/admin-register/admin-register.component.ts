@@ -15,6 +15,9 @@ export class AdminRegisterComponent {
   otp = '';
   showOtpBox = false;
   message = '';
+LastName: any;
+Confirmpassword: any;
+Firstname: any;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
