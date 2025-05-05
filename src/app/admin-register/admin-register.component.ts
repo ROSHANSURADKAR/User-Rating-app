@@ -9,21 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-register.component.css']
 })
 export class AdminRegisterComponent {
-  name = '';
+  first_name = '';
+  last_name = '';
   email = '';
+  phone_number = '';
   password = '';
+  confirm_password = '';
   otp = '';
   showOtpBox = false;
   message = '';
-LastName: any;
-Confirmpassword: any;
-Firstname: any;
-
   constructor(private apiService: ApiService, private router: Router) {}
 
   registerAdmin() {
-    const adminData = { name: this.name, email: this.email, password: this.password };
-    this.apiService.adminRegister(adminData).subscribe(
+    const adminData = {  first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      password: this.password,
+      confirm_password: this.confirm_password,
+      phone_number: this.phone_number };
+   
+      this.apiService.adminRegister(adminData).subscribe(
       (response: any) => {
         this.showOtpBox = true;
         this.message = response.message;
@@ -35,11 +40,8 @@ Firstname: any;
   }
 
   verifyOtp() {
-
-    this.apiService. verifyOtp(this.email, this.otp).subscribe(
-
-
-      (response) => {
+this.apiService.verifyOtp(this.email,this.otp).subscribe(
+(response: any) => {
         alert("Registration Successful!");
         this.router.navigate(['/admin-login']);
       },
