@@ -8,13 +8,12 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  credentials = { email: '', password: '' };
 
   constructor(private apiService: ApiService, private router: Router) {}
 
   login() {
-    this.apiService.userLogin(this.email, this.password).subscribe(
+    this.apiService.userLogin(this.credentials).subscribe(
       (response) => {
         alert("Login Successful!");
         localStorage.setItem('isLoggedIn', 'true');

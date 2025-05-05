@@ -18,18 +18,18 @@ export class ApiService {
   }
 
   // User Registration
-  registerUser(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/register`, { email, password });
+  registerUser(data:any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users/register`, data);
   }
 
   // User OTP verification
-  verifyUserOtp(email: string, otp: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/verify-otp`, { email, otp });
+  verifyUserOtp(data:any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users/verify-otp`, data);
   }
 
   // User login
-  userLogin(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/login`, { email, password });
+  userLogin(data:any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users/login`, data);
   }
   adminRegister(data: any) {
     return this.http.post(`${this.apiUrl}/admin/register`, data);

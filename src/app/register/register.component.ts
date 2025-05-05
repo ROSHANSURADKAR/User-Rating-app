@@ -8,39 +8,31 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  email = '';
-  password = '';
+  user: any = {};
+  otpSent: boolean = false;
+  emailForOtp = '';
   otp = '';
-  isOtpSent = false;
+
 
   constructor(private apiService: ApiService, private router: Router) {}
-
   register() {
-    this.apiService.registerUser(this.email, this.password).subscribe(
-      (response) => {
-        alert("OTP Sent! Check your email.");
-        this.isOtpSent = true;
+    this.apiService. registerUser(this.user).subscribe({
+      next: (res: any) => {
+        alert(res.message);
+        this.otpSent = true;
+        this.emailForOtp = this.user.email;
       },
-      (error) => {
-        alert(error.error.message || "Registration Failed");
-      }
-    );
+      error: err => alert(err.error.message)
+    });
   }
 
   verifyOtp() {
-
-    this.apiService. verifyUserOtp(this.email, this.otp).subscribe(
-
-
-      (response) => {
-        alert("Registration Successful!");
-        this.router.navigate(['/login']);
-      },
-      (error) => {
-        alert("OTP Verification Failed!");
-      }
-    );
+    this.apiService.verifyUserOtp({ email: this.emailForOtp, otp: this.otp }).subscribe({
+      next: (res: any) => alert(res.message),
+      error: err => alert(err.error.message)
+    });
   }
+
   goToLogin() {
     this.router.navigate(['/login']); // ✅ Function to navigate to Login page
   }
