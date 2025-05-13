@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { HomeComponent } from './home/home.component';
     AdminRegisterComponent,
     AdminDashbordComponent,
     HomeComponent,
+   
    
   ],
   imports: [

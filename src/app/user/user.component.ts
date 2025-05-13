@@ -37,5 +37,10 @@ export class UserComponent implements OnInit{
       this.rating = null;
       this.comments = '';
     });
-  }
+  }cancel(): void {
+  this.userName = '';
+  this.rating = null;
+  this.comments = '';
+}
+
 }

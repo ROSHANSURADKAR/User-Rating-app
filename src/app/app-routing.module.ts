@@ -11,6 +11,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 import { HomeComponent } from './home/home.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashbordComponent,  canActivate: [AdminAuthGuard]},
   { path: 'admin-register', component: AdminRegisterComponent },
   { path: 'admin-login', component: AdminLoginComponent },
+ 
  
   
   
