@@ -54,5 +54,9 @@ export class ApiService {
   deleteRating(id: number) {
     return this.http.delete(`${this.apiUrl}/ratings/${id}`);
   }
+  updateRating(id: number, ratingData: any) {
+  return this.http.put(`${this.apiUrl}/ratings/${id}`, ratingData);
+}
+
 }
 
