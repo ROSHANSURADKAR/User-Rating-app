@@ -50,5 +50,7 @@ this.apiService.verifyOtp(this.email,this.otp).subscribe(
       }
     );
   }
-  
+   goToadminRegister() {
+    this.router.navigate(['/admin-login']); 
+  }
 }

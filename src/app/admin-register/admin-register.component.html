@@ -10,6 +10,8 @@
 <input [(ngModel)]="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" required>
 
     <button (click)="registerAdmin()">Register</button>
+
+    
   </div>
 
   <div *ngIf="showOtpBox">
@@ -22,6 +24,6 @@
   
 
   <div>
-   <p>Already have an account?<a routerLink="/admin-Login">login</a></p> 
+   <p>Already have an account?<a (click)="goToadminRegister()">Login here</a></p> 
   </div>
 </div>

@@ -8,6 +8,7 @@
   address :<input [(ngModel)]="user.address" name="address" placeholder="Address">
   Phone number :<input [(ngModel)]="user.phone_number" name="phone_number" placeholder="Phone Number">
   <button type="submit">Register</button>
+   <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
 </form>
 
 <div *ngIf="otpSent">
