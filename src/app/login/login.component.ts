@@ -15,7 +15,7 @@ export class LoginComponent {
   login() {
     this.apiService.userLogin(this.credentials).subscribe(
       (response) => {
-        alert("Login Successful!");
+        
         localStorage.setItem('isLoggedIn', 'true');
         this.router.navigate(['/user']);
       },
@@ -25,6 +25,6 @@ export class LoginComponent {
     );
   }
   goToRegister() {
-    this.router.navigate(['/register']); // 🔥 Button to switch to Register Page
+    this.router.navigate(['/register']); 
   }
 }

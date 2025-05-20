@@ -16,7 +16,7 @@ export class AppComponent {
 
   logout() {
     localStorage.removeItem('isLoggedIn');
-    alert('Logged out successfully!');
+    
     this.router.navigate(['/login']); // 🔥 Redirect to Login Page
   }
   isLoggedIn1() {
@@ -25,7 +25,7 @@ export class AppComponent {
 
   logout2() {
     localStorage.removeItem('isLoggedIn');
-    alert('Logged out successfully!');
+   
     this.router.navigate(['/admin-login']); // 🔥 Redirect to Login Page
   }
 }

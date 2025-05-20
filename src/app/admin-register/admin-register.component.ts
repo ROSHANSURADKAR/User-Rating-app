@@ -42,7 +42,7 @@ export class AdminRegisterComponent {
   verifyOtp() {
 this.apiService.verifyOtp(this.email,this.otp).subscribe(
 (response: any) => {
-        alert("Registration Successful!");
+        
         this.router.navigate(['/admin-login']);
       },
       (error) => {
