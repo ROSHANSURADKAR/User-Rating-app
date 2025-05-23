@@ -11,19 +11,19 @@ export class LoginComponent {
   credentials = { email: '', password: '' };
 
   constructor(private apiService: ApiService, private router: Router) {}
+login() {
+  this.apiService.userLogin(this.credentials).subscribe(
+    (response: any) => {
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('user', JSON.stringify(response.user)); // ✅ store user info
+      this.router.navigate(['/user']);
+    },
+    (error) => {
+      alert("Login Failed! Please check your Email and password");
+    }
+  );
+}
 
-  login() {
-    this.apiService.userLogin(this.credentials).subscribe(
-      (response) => {
-        
-        localStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['/user']);
-      },
-      (error) => {
-        alert("Login Failed! Please check your credentials.");
-      }
-    );
-  }
   goToRegister() {
     this.router.navigate(['/register']); 
   }

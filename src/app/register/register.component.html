@@ -1,16 +1,38 @@
 <h2>User Register</h2>
-<form *ngIf="!otpSent" (ngSubmit)="register()">
-  First name : <input [(ngModel)]="user.first_name" name="first_name" placeholder="First Name" required>
-  last name : <input [(ngModel)]="user.last_name" name="last_name" placeholder="Last Name" required>
-  email :<input [(ngModel)]="user.email" name="email" placeholder="Email" required>
-  password :<input [(ngModel)]="user.password" name="password" type="password" placeholder="Password" required>
-  Comfirm password :<input [(ngModel)]="user.confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" required>
-  address :<input [(ngModel)]="user.address" name="address" placeholder="Address">
-  Phone number :<input [(ngModel)]="user.phone_number" name="phone_number" placeholder="Phone Number">
+ 
+<form *ngIf="!otpSent" #registerForm="ngForm" (ngSubmit)="register()">
+ 
+  First Name :-
+  <input [(ngModel)]="user.first_name" name="first_name" #firstName="ngModel" placeholder="First Name" required>
+  <div *ngIf="firstName.invalid && firstName.touched" style="color: red;">First name is required</div>
+ 
+  Last Name:-
+  <input [(ngModel)]="user.last_name" name="last_name" #lastName="ngModel" placeholder="Last Name" required>
+  <div *ngIf="lastName.invalid && lastName.touched" style="color: red;">Last name is required</div>
+ 
+  Email:-
+  <input [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="Email" type="email" required>
+  <div *ngIf="email.invalid && email.touched" style="color: red;">Valid email is required</div>
+ 
+  Password:-
+  <input [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password" type="password" required>
+  <div *ngIf="password.invalid && password.touched" style="color: red;">Password is required</div>
+ 
+  Confirm Password:-
+  <input [(ngModel)]="user.confirm_password" name="confirm_password" #confirmPassword="ngModel" placeholder="Confirm Password" type="password" required>
+  <div *ngIf="confirmPassword.invalid && confirmPassword.touched" style="color: red;">Confirm Password is required</div>
+ 
+  Address:-
+  <input [(ngModel)]="user.address" name="address" placeholder="Address" required>
+ 
+   Phone Number :-
+  <input [(ngModel)]="user.phone_number" name="phone_number" placeholder="Phone Number" required>
+ 
   <button type="submit">Register</button>
-   <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
+ 
+  <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
 </form>
-
+ 
 <div *ngIf="otpSent">
   <h3>Enter OTP sent to email</h3>
   <input [(ngModel)]="otp" placeholder="OTP">

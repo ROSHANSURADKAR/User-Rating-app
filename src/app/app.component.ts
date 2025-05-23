@@ -10,22 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router) {}
 
-  isLoggedIn() {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  }
+ 
 
-  logout() {
-    localStorage.removeItem('isLoggedIn');
-    
-    this.router.navigate(['/login']); // 🔥 Redirect to Login Page
-  }
-  isLoggedIn1() {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  }
-
-  logout2() {
-    localStorage.removeItem('isLoggedIn');
-   
-    this.router.navigate(['/admin-login']); // 🔥 Redirect to Login Page
-  }
+  
 }

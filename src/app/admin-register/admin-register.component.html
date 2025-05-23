@@ -1,19 +1,43 @@
 <div class="register-container">
   <h2>Admin Registration</h2>
 
+  <!-- Registration Form -->
   <div *ngIf="!showOtpBox">
-    <input [(ngModel)]="first_name" name="first_name" placeholder="First Name" required>
-<input [(ngModel)]="last_name" name="last_name" placeholder="Last Name" required>
-<input [(ngModel)]="email" name="email" placeholder="Email" required>
-<input [(ngModel)]="phone_number" name="phone_number" placeholder="Phone Number" required>
-<input [(ngModel)]="password" name="password" type="password" placeholder="Password" required>
-<input [(ngModel)]="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" required>
+    <label>
+      First Name:
+      <input [(ngModel)]="first_name" name="first_name" placeholder="First Name" required />
+    </label><br>
+    
+
+    <label>
+      Last Name:
+      <input [(ngModel)]="last_name" name="last_name" placeholder="Last Name" required />
+    </label>
+
+    <label>
+      Email:
+      <input [(ngModel)]="email" name="email" placeholder="Email" required />
+    </label>
+
+    <label>
+      Phone Number:
+      <input [(ngModel)]="phone_number" name="phone_number" placeholder="Phone Number" required />
+    </label>
+
+    <label>
+      Password:
+      <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
+    </label>
+
+    <label>
+      Confirm Password:
+      <input [(ngModel)]="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" required />
+    </label>
 
     <button (click)="registerAdmin()">Register</button>
-
-    
   </div>
 
+  <!-- OTP Verification -->
   <div *ngIf="showOtpBox">
     <p>{{ message }}</p>
     <input [(ngModel)]="otp" placeholder="Enter OTP" type="text" />
@@ -21,9 +45,8 @@
     <button (click)="verifyOtp()">Verify OTP</button>
   </div>
 
-  
-
-  <div>
-   <p>Already have an account?<a (click)="goToadminRegister()">Login here</a></p> 
+  <!-- Redirect to Login -->
+  <div class="login-link">
+    <p>Already have an account? <a (click)="goToadminRegister()">Login here</a></p>
   </div>
 </div>
