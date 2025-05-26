@@ -13,7 +13,7 @@
         <h2>User Profile</h2>
         <h1>WELCOME, {{ userName}}</h1>
         <h3>EMAIL: {{ userEmail }}</h3>
-        <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
 <form (ngSubmit)="submitRating()">
   <label>
     Product Name:
-    <input type="text" [(ngModel)]="productName" name="productName" required />
+    <input type="text" [(ngModel)]="productName" name="Product_name" required />
   </label>
 
   <label>
@@ -47,7 +47,7 @@
 <h2>All Ratings</h2>
 <ul>
   <li *ngFor="let r of ratings">
-    <strong>{{ r.user_name }}</strong> - {{ r.rating }}★<br />
+    <strong>{{ r.product_name }}</strong> - {{ r.rating }}★<br />
     {{ r.comments }}<br />
     <button (click)="editRating(r)">Edit</button>
   </li>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewComponent } from './review/review.component';
-import { UserComponent } from './user/user.component';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -13,6 +13,7 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -22,7 +23,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     ReviewComponent,
-    UserComponent,
+   UserComponent,
     LoginComponent,
     RegisterComponent,
     AdminLoginComponent,
