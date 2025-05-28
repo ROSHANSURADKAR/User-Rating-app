@@ -24,7 +24,7 @@
 <form (ngSubmit)="submitRating()">
   <label>
     Product Name:
-    <input type="text" [(ngModel)]="productName" name="Product_name" required />
+    <input type="text" [(ngModel)]="product_name" name="Product_name" required />
   </label>
 
   <label>
@@ -49,6 +49,13 @@
   <li *ngFor="let r of ratings">
     <strong>{{ r.product_name }}</strong> - {{ r.rating }}★<br />
     {{ r.comments }}<br />
+     <small>By: {{ r.submittedBy }}</small><br>
     <button (click)="editRating(r)">Edit</button>
   </li>
 </ul>
+
+
+
+  
+
+ 

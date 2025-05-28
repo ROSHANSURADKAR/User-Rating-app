@@ -13,14 +13,14 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
  
   ratings: any[] = [];
-  userName: string = '';
-  userEmail: string = '';
-
-  productName: string = '';
+  product_name: string = '';
   rating: number | null = null;
   comments: string = '';
 
-  isEditMode: boolean = false;
+  userName: string = '';
+  userEmail: string = '';
+
+ isEditMode: boolean = false;
   editId: number | null = null;
 
 
@@ -52,12 +52,12 @@ export class UserComponent implements OnInit {
 
     submitRating(): void {
     const ratingData = {
-      Product_name: this.productName,
+      Product_name: this.product_name,
       rating: this.rating,
       comments: this.comments,
       submittedBy: this.userEmail // or use userName
     };
-
+console.log('log submit');
    
 if (this.isEditMode && this.editId !== null) {
       // Update existing rating
@@ -77,7 +77,7 @@ if (this.isEditMode && this.editId !== null) {
   editRating(rating: any): void {
     this.isEditMode = true;
     this.editId = rating.id;
-    this.productName = rating.Product_name;
+    this.product_name = rating.Product_name;
     this.rating = rating.rating;
     this.comments = rating.comments;
   }
@@ -86,7 +86,7 @@ if (this.isEditMode && this.editId !== null) {
   }
 
   resetForm(): void {
-    this.productName = '';
+    this.product_name = '';
     this.rating = null;
     this.comments = '';
     this.isEditMode = false;

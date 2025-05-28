@@ -75,3 +75,11 @@ button:hover {
   width: 80%;
   font-size: 16px;
 }
+.error-box {
+  color: red;
+  border: 1px solid red;
+  padding: 4px 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: #ffe6e6;
+}

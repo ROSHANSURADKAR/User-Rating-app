@@ -12,11 +12,17 @@ export class RegisterComponent {
   otpSent: boolean = false;
   emailForOtp = '';
   otp = '';
-
+submitted: boolean = false; 
 
   constructor(private apiService: ApiService, private router: Router) {}
-  register() {
-    this.apiService. registerUser(this.user).subscribe({
+
+register(form: any) {
+    this.submitted = true;
+    if (form.invalid) {
+      return; // ⛔ Stop if form is invalid
+    }
+
+    this.apiService.registerUser(this.user).subscribe({
       next: (res: any) => {
         alert(res.message);
         this.otpSent = true;
@@ -25,7 +31,6 @@ export class RegisterComponent {
       error: err => alert(err.error.message)
     });
   }
-
   verifyOtp() {
     this.apiService.verifyUserOtp({ email: this.emailForOtp, otp: this.otp }).subscribe({
       next: (res: any) => alert(res.message),
@@ -37,3 +42,10 @@ export class RegisterComponent {
     this.router.navigate(['/login']); // ✅ Function to navigate to Login page
   }
 }
+
+
+ 
+
+  
+
+  

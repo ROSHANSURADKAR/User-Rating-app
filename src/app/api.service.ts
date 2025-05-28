@@ -12,10 +12,7 @@ export class ApiService {
 
   
 
-  // Submit a rating
-  submitRating(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/ratings`, data);
-  }
+  
 
   // User Registration
   registerUser(data:any): Observable<any> {
@@ -46,17 +43,22 @@ export class ApiService {
   }
 
   // 🔹 Get Ratings for Admin Dashboard
+ 
   getRatings() {
     return this.http.get<any[]>(`${this.apiUrl}/ratings`);
   }
 
-  // 🔹 Delete a Rating
+  submitRating(data: any) {
+    return this.http.post(`${this.apiUrl}/ratings`, data);
+  }
+
+  updateRating(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/ratings/${id}`, data);
+  }
+
   deleteRating(id: number) {
     return this.http.delete(`${this.apiUrl}/ratings/${id}`);
   }
-  updateRating(id: number, ratingData: any) {
-  return this.http.put(`${this.apiUrl}/ratings/${id}`, ratingData);
-}
 
 }
 

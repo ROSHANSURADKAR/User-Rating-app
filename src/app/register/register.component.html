@@ -1,41 +1,64 @@
 <h2>User Register</h2>
- 
-<form *ngIf="!otpSent" #registerForm="ngForm" (ngSubmit)="register()">
- 
-  First Name :-
-  <input [(ngModel)]="user.first_name" name="first_name" #firstName="ngModel" placeholder="First Name" required>
-  <div *ngIf="firstName.invalid && firstName.touched" style="color: red;">First name is required</div>
- 
-  Last Name:-
-  <input [(ngModel)]="user.last_name" name="last_name" #lastName="ngModel" placeholder="Last Name" required>
-  <div *ngIf="lastName.invalid && lastName.touched" style="color: red;">Last name is required</div>
- 
-  Email:-
-  <input [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="Email" type="email" required>
-  <div *ngIf="email.invalid && email.touched" style="color: red;">Valid email is required</div>
- 
-  Password:-
-  <input [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password" type="password" required>
-  <div *ngIf="password.invalid && password.touched" style="color: red;">Password is required</div>
- 
-  Confirm Password:-
-  <input [(ngModel)]="user.confirm_password" name="confirm_password" #confirmPassword="ngModel" placeholder="Confirm Password" type="password" required>
-  <div *ngIf="confirmPassword.invalid && confirmPassword.touched" style="color: red;">Confirm Password is required</div>
- 
-  Address:-
-  <input [(ngModel)]="user.address" name="address" placeholder="Address" required>
- 
-   Phone Number :-
-  <input [(ngModel)]="user.phone_number" name="phone_number" placeholder="Phone Number" required>
- 
+
+<form *ngIf="!otpSent" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+  
+  <!-- First Name -->
+  <label>First Name:</label>
+  <input [(ngModel)]="user.first_name" name="first_name" #firstName="ngModel" required>
+  <div class="error-box" *ngIf="(firstName.invalid && (firstName.touched || submitted))">
+    First name is required
+  </div>
+
+  <!-- Last Name -->
+  <label>Last Name:</label>
+  <input [(ngModel)]="user.last_name" name="last_name" #lastName="ngModel" required>
+  <div class="error-box" *ngIf="(lastName.invalid && (lastName.touched || submitted))">
+    Last name is required
+  </div>
+
+  <!-- Email -->
+  <label>Email:</label>
+  <input [(ngModel)]="user.email" name="email" #email="ngModel" type="email" required>
+  <div class="error-box" *ngIf="(email.invalid && (email.touched || submitted))">
+    Valid email is required
+  </div>
+
+  <!-- Password -->
+  <label>Password:</label>
+  <input [(ngModel)]="user.password" name="password" #password="ngModel" type="password" required>
+  <div class="error-box" *ngIf="(password.invalid && (password.touched || submitted))">
+    Password is required
+  </div>
+
+  <!-- Confirm Password -->
+  <label>Confirm Password:</label>
+  <input [(ngModel)]="user.confirm_password" name="confirm_password" #confirmPassword="ngModel" type="password" required>
+  <div class="error-box" *ngIf="(confirmPassword.invalid && (confirmPassword.touched || submitted))">
+    Confirm password is required
+  </div>
+
+  <!-- Address -->
+  <label>Address:</label>
+  <input [(ngModel)]="user.address" name="address" #address="ngModel" required>
+  <div class="error-box" *ngIf="(address.invalid && (address.touched || submitted))">
+    Address is required
+  </div>
+
+  <!-- Phone Number -->
+  <label>Phone Number:</label>
+  <input [(ngModel)]="user.phone_number" name="phone_number" #phone="ngModel" required>
+  <div class="error-box" *ngIf="(phone.invalid && (phone.touched || submitted))">
+    Phone number is required
+  </div>
+
   <button type="submit">Register</button>
- 
+
   <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
 </form>
- 
+
+<!-- OTP Section -->
 <div *ngIf="otpSent">
   <h3>Enter OTP sent to email</h3>
   <input [(ngModel)]="otp" placeholder="OTP">
   <button (click)="verifyOtp()">Verify OTP</button>
 </div>
- 
