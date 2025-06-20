@@ -11,13 +11,21 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 import { HomeComponent } from './home/home.component';
 
+import { SubmitratingComponent } from './submitrating/submitrating.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent },
+ 
   { path: 'reviews', component: ReviewComponent },
+ 
+ { path: '', redirectTo: 'submitrating', pathMatch: 'full' },
+
+  { path: 'submitrating', component: SubmitratingComponent, canActivate: [AuthGuard] },
   { path: 'admin-dashboard', component: AdminDashbordComponent,  canActivate: [AdminAuthGuard]},
   { path: 'admin-register', component: AdminRegisterComponent },
   { path: 'admin-login', component: AdminLoginComponent },

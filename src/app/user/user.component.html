@@ -1,24 +1,7 @@
-<!-- Navigation -->
+
 <nav>
-  <a routerLink="/user" *ngIf="isLoggedIn()">Submit Rating</a><br />
-  <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a><br />
+  <a routerLink="/submitrating" *ngIf="isLoggedIn()">Submit Rating</a><br />
 </nav>
-
-<!-- Top-right Profile -->
-<div class="navbar">
-  <div class="profile">
-    <div class="avatar">R</div>
-    <div class="user-dropdown">
-      <div class="profile-card">
-        <h2>User Profile</h2>
-        <h1>WELCOME, {{ userName}}</h1>
-        <h3>EMAIL: {{ userEmail }}</h3>
-        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Rating Form -->
 <h2>User Ratings</h2>
 <form (ngSubmit)="submitRating()">
@@ -44,12 +27,4 @@
 </form>
 
 <!-- Rating List -->
-<h2>All Ratings</h2>
-<ul>
-  <li *ngFor="let r of ratings">
-    <strong>{{ r.product_name }}</strong> - {{ r.rating }}★<br />
-    {{ r.comments }}<br />
-     <small>By: {{ r.submittedBy }}</small><br>
-    <button (click)="editRating(r)">Edit</button>
-  </li>
-</ul>
+

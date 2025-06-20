@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 
 export class UserComponent implements OnInit {
+
  
   ratings: any[] = [];
   product_name: string = '';
@@ -23,7 +24,7 @@ export class UserComponent implements OnInit {
  isEditMode: boolean = false;
   editId: number | null = null;
 
-
+ 
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
@@ -101,4 +102,6 @@ if (this.isEditMode && this.editId !== null) {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
+
+
 }

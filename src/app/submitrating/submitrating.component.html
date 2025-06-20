@@ -1,0 +1,52 @@
+
+
+<!-- Navigation -->
+<nav>
+  <a routerLink="/user" *ngIf="isLoggedIn()">User Home</a><br />
+  <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a><br />
+  
+</nav>
+
+<!-- Top-right Profile -->
+<div class="navbar">
+  <div class="profile">
+    <div class="avatar">R</div>
+    <div class="user-dropdown">
+      <div class="profile-card">
+        <div class="avatar">R</div>
+        <h1>WELCOME, {{ userName }}</h1>
+        <h3>EMAIL: {{ userEmail }}</h3>
+
+        <!-- Settings Option -->
+        <button (click)="showSettings = !showSettings">⚙️ Settings</button>
+
+        <!-- Settings Menu -->
+        <div *ngIf="showSettings" class="settings-menu">
+          <button (click)="changeUsername()">Change Username</button>
+          <button (click)="changePassword()">Change Password</button>
+        </div><br>
+
+        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+<h2>All Ratings</h2>
+
+<input 
+  type="text" 
+  placeholder="Search by product name, user, or comment" 
+ [(ngModel)]="searchQuery"
+  (input)="searchRatings()" 
+/>
+
+<div *ngFor="let rating of filteredRatings ; let i = index ">
+   <p><strong>{{ i + 1 }}.</strong></p>
+  <strong>Product:</strong> {{ rating.Product_name }} <br />
+  <strong>Rating:</strong> {{ rating.rating }} Stars <br />
+  <strong>Comment:</strong> {{ rating.comment }} <br />
+  <strong>By:</strong> {{ rating.submittedBy }} <br />
+  <button (click)="deleteRating(rating.id)">Delete</button>
+
+ 
+</div>

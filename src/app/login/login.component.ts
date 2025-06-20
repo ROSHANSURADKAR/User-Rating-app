@@ -16,10 +16,7 @@ login() {
     (response: any) => {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('user', JSON.stringify(response.user)); // ✅ store user info
-      this.router.navigate(['/user']);
-    },
-    (error) => {
-      alert("Login Failed! Please check your Email and password");
+      this.router.navigate(['/submitrating']);
     }
   );
 }
