@@ -43,8 +43,9 @@
 <div *ngFor="let rating of filteredRatings ; let i = index ">
    <p><strong>{{ i + 1 }}.</strong></p>
   <strong>Product:</strong> {{ rating.Product_name }} <br />
-  <strong>Rating:</strong> {{ rating.rating }} Stars <br />
-  <strong>Comment:</strong> {{ rating.comment }} <br />
+  <strong>Rating:</strong> {{ rating.rating }} ⭐ <br />
+  <strong>category:</strong> {{ rating.category }}<br />
+  <strong>Comment:</strong> {{ rating.Comment }} <br />
   <strong>By:</strong> {{ rating.submittedBy }} <br />
   <button (click)="deleteRating(rating.id)">Delete</button>
 

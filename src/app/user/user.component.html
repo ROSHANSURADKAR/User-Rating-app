@@ -14,10 +14,18 @@
     Rating:
     <input type="number" [(ngModel)]="rating" name="rating" min="1" max="5" required />
   </label>
-
+<label for="category">Choose a category:</label>
+<select id="category" name="category">
+<option value="">--Select a Category--</option>
+<option value="electronics">Electronics</option>
+<option value="restaurants">Restaurants</option>
+<option value="apps">Mobile Apps</option>
+<option value="books">Books</option>
+<option value="movies">Movies</option>
+</select>
   <label>
     Comments:
-    <textarea [(ngModel)]="comments" name="comments"></textarea>
+    <textarea [(ngModel)]="Comment" name="Comment"></textarea>
   </label>
 
   <button type="submit">

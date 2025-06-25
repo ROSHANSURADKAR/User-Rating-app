@@ -16,7 +16,8 @@ export class UserComponent implements OnInit {
   ratings: any[] = [];
   product_name: string = '';
   rating: number | null = null;
-  comments: string = '';
+  category: string='';
+  Comment: string = '';
 
   userName: string = '';
   userEmail: string = '';
@@ -55,7 +56,8 @@ export class UserComponent implements OnInit {
     const ratingData = {
       Product_name: this.product_name,
       rating: this.rating,
-      comments: this.comments,
+      category:this.category,
+      Comment: this.Comment,
       submittedBy: this.userEmail // or use userName
     };
 console.log('log submit');
@@ -80,7 +82,8 @@ if (this.isEditMode && this.editId !== null) {
     this.editId = rating.id;
     this.product_name = rating.Product_name;
     this.rating = rating.rating;
-    this.comments = rating.comments;
+    this.category=rating.category;
+    this.Comment = rating.Comment;
   }
   cancel(): void {
     this.resetForm();
@@ -89,7 +92,8 @@ if (this.isEditMode && this.editId !== null) {
   resetForm(): void {
     this.product_name = '';
     this.rating = null;
-    this.comments = '';
+    this.category='';
+    this.Comment = '';
     this.isEditMode = false;
     this.editId = null;
   }

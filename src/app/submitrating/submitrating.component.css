@@ -255,15 +255,18 @@ div[ngFor] {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: relative;
+  text-align: center;
 }
 
 div[ngFor] strong {
   font-size: 18px;
   color: #2c3e50;
+  text-align: center;
 }
 
 div[ngFor] small {
   color: #7f8c8d;
+  text-align: center;
 }
 
 div[ngFor] button {
@@ -277,10 +280,12 @@ div[ngFor] button {
   color: white;
   font-size: 12px;
   cursor: pointer;
+  text-align: center;
 }
 
 div[ngFor] button:hover {
   background-color: #e67e22;
+  text-align: center;
 }
 /* Rating Card Container */
 div[ngFor] {
@@ -294,18 +299,21 @@ div[ngFor] {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   position: relative;
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  text-align: center;
 }
 
 /* Product name + Rating */
 div[ngFor] strong {
   font-size: 18px;
   color: #2c3e50;
+  text-align: center;
 }
 
 /* Rating value */
 div[ngFor] strong::after {
   content: ' ⭐';
   color: #f1c40f;
+  text-align: center;
 }
 
 /* Comment text */
@@ -314,6 +322,7 @@ div[ngFor] br + * {
   margin-top: 5px;
   font-size: 14px;
   color: #333;
+  text-align: center;
 }
 
 /* Submitter email */
@@ -322,6 +331,7 @@ div[ngFor] small {
   margin-top: 8px;
   color: #7f8c8d;
   font-style: italic;
+  text-align: center;
 }
 
 /* Edit Button */
@@ -334,10 +344,12 @@ div[ngFor] button {
   border-radius: 5px;
   font-size: 13px;
   cursor: pointer;
+  text-align: center;
 }
 
 div[ngFor] button:hover {
   background-color: #e67e22;
+  text-align: center;
 }
 
 /* Divider line */
@@ -345,6 +357,7 @@ div[ngFor] hr {
   margin-top: 15px;
   border: 0;
   border-top: 1px solid #ddd;
+  text-align: center;
 }
 .settings-menu {
   margin-top: 10px;
@@ -395,6 +408,7 @@ div[ngfor] {
   border-radius: 12px;
   max-width: 700px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
 /* Text styling */

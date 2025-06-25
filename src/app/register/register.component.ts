@@ -42,10 +42,3 @@ register(form: any) {
     this.router.navigate(['/login']); // ✅ Function to navigate to Login page
   }
 }
-
-
- 
-
-  
-
-  
