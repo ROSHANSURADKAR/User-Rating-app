@@ -5,6 +5,24 @@
 <!-- Rating Form -->
 <h2>User Ratings</h2>
 <form (ngSubmit)="submitRating()">
+ <label for="category">Choose a category:</label>
+<select id="category" [(ngModel)]="category" name="category" required>
+  <option value="">--Select a Category--</option>
+  <option value="electronics">Electronics</option>
+  <option value="restaurants">Restaurants</option>
+  <option value="apps">Mobile Apps</option>
+  <option value="books">Books</option>
+  <option value="movies">Movies</option>
+</select>
+<div *ngIf="category">
+  <label for="subcategory">Choose a subcategory:</label>
+  <select id="subcategory" [(ngModel)]="subcategory" name="subcategory" required>
+    <option value="">--Select a Subcategory--</option>
+    <option *ngFor="let sub of subcategoriesMap[category]" [value]="sub">
+      {{ sub }}
+    </option>
+  </select>
+</div>
   <label>
     Product Name:
     <input type="text" [(ngModel)]="product_name" name="Product_name" required />
@@ -14,15 +32,7 @@
     Rating:
     <input type="number" [(ngModel)]="rating" name="rating" min="1" max="5" required />
   </label>
-<label for="category">Choose a category:</label>
-<select id="category" name="category">
-<option value="">--Select a Category--</option>
-<option value="electronics">Electronics</option>
-<option value="restaurants">Restaurants</option>
-<option value="apps">Mobile Apps</option>
-<option value="books">Books</option>
-<option value="movies">Movies</option>
-</select>
+
   <label>
     Comments:
     <textarea [(ngModel)]="Comment" name="Comment"></textarea>

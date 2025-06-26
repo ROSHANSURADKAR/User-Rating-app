@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   product_name: string = '';
   rating: number | null = null;
   category: string='';
+  subcategory:string='';
   Comment: string = '';
 
   userName: string = '';
@@ -57,6 +58,7 @@ export class UserComponent implements OnInit {
       Product_name: this.product_name,
       rating: this.rating,
       category:this.category,
+      subcategory:this.subcategory,
       Comment: this.Comment,
       submittedBy: this.userEmail // or use userName
     };
@@ -83,6 +85,7 @@ if (this.isEditMode && this.editId !== null) {
     this.product_name = rating.Product_name;
     this.rating = rating.rating;
     this.category=rating.category;
+    this.subcategory=rating.subcategory;
     this.Comment = rating.Comment;
   }
   cancel(): void {
@@ -93,10 +96,18 @@ if (this.isEditMode && this.editId !== null) {
     this.product_name = '';
     this.rating = null;
     this.category='';
+    this.subcategory='';
     this.Comment = '';
     this.isEditMode = false;
     this.editId = null;
   }
+  subcategoriesMap: { [key: string]: string[] } = {
+  electronics: ['Mobiles', 'Laptops', 'TVs'],
+  restaurants: ['Fast Food', 'Fine Dining', 'Cafes'],
+  apps: ['Social Media', 'Productivity', 'Games'],
+  books: ['Fiction', 'Non-Fiction', 'Comics'],
+  movies: ['Action', 'Drama', 'Comedy']
+};
   isLoggedIn(): boolean {
     return localStorage.getItem('isLoggedIn') === 'true';
   }
