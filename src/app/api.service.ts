@@ -59,6 +59,8 @@ export class ApiService {
   deleteRating(id: number) {
     return this.http.delete(`${this.apiUrl}/ratings/${id}`);
   }
-
+      getId(id : any) : Observable<any>{
+        return this.http.delete(`${this.apiUrl}/ratings/${id}`);
+      }
 }
 

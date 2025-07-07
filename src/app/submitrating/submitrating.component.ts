@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+ 
 
 @Component({
   selector: 'app-submitrating',
@@ -83,11 +84,14 @@ export class SubmitratingComponent implements OnInit {
     }
   }
   deleteRating(id: number): void {
+    console.log(id);
+    
   if (confirm('Are you sure you want to delete this rating?')) {
     this.apiService.deleteRating(id).subscribe(() => {
       this.fetchAllRatings(); // refresh after delete
     });
   }
 }
+
 
 }

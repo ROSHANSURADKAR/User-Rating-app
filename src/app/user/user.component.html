@@ -4,45 +4,109 @@
 </nav>
 <!-- Rating Form -->
 <h2>User Ratings</h2>
-<form (ngSubmit)="submitRating()">
- <label for="category">Choose a category:</label>
-<select id="category" [(ngModel)]="category" name="category" required>
-  <option value="">--Select a Category--</option>
-  <option value="electronics">Electronics</option>
-  <option value="restaurants">Restaurants</option>
-  <option value="apps">Mobile Apps</option>
-  <option value="books">Books</option>
-  <option value="movies">Movies</option>
-</select>
-<div *ngIf="category">
-  <label for="subcategory">Choose a subcategory:</label>
-  <select id="subcategory" [(ngModel)]="subcategory" name="subcategory" required>
-    <option value="">--Select a Subcategory--</option>
-    <option *ngFor="let sub of subcategoriesMap[category]" [value]="sub">
-      {{ sub }}
-    </option>
+<form (ngSubmit)="submitRating()" #ratingForm="ngForm">
+  <!-- Category -->
+  <label for="category">Choose a category:</label>
+  <select
+    id="category"
+    [(ngModel)]="category"
+    name="category"
+    required
+    #categoryCtrl="ngModel"
+  >
+    <option value="">--Select a Category--</option>
+    <option value="electronics">Electronics</option>
+    <option value="restaurants">Restaurants</option>
+    <option value="apps">Mobile Apps</option>
+    <option value="books">Books</option>
+    <option value="movies">Movies</option>
   </select>
-</div>
+  <div class="error-box" *ngIf="categoryCtrl.invalid && (categoryCtrl.touched || ratingForm.submitted)">
+    Category is required
+  </div>
+
+  <!-- Subcategory -->
+  <div *ngIf="category && subcategoriesMap[category]">
+    <label for="subcategory">Choose a subcategory:</label>
+    <select
+      id="subcategory"
+      [(ngModel)]="subcategory"
+      name="subcategory"
+      required
+      #subcategoryCtrl="ngModel"
+    >
+      <option value="">--Select a Subcategory--</option>
+      <option *ngFor="let sub of subcategoriesMap[category]" [value]="sub">
+        {{ sub }}
+      </option>
+    </select>
+    <div class="error-box" *ngIf="subcategoryCtrl.invalid && (subcategoryCtrl.touched || ratingForm.submitted)">
+      Subcategory is required
+    </div>
+  </div>
+
+  <!-- Product Name -->
   <label>
     Product Name:
-    <input type="text" [(ngModel)]="product_name" name="Product_name" required />
+    <input
+      type="text"
+      [(ngModel)]="product_name"
+      name="Product_name"
+      required
+      #productName="ngModel"
+    />
   </label>
+  <div class="error-box" *ngIf="productName.invalid && (productName.touched || ratingForm.submitted)">
+    Product name is required
+  </div>
 
+  <!-- Rating -->
   <label>
     Rating:
-    <input type="number" [(ngModel)]="rating" name="rating" min="1" max="5" required />
+    <input
+      type="number"
+      [(ngModel)]="rating"
+      name="rating"
+      min="1"
+      max="5"
+      required
+      #ratingCtrl="ngModel"
+    />
   </label>
+  <div class="error-box" *ngIf="ratingCtrl.invalid && (ratingCtrl.touched || ratingForm.submitted)">
+    Rating is required 1 to 5
+  </div>
 
+  <!-- Comments -->
   <label>
     Comments:
-    <textarea [(ngModel)]="Comment" name="Comment"></textarea>
+    <textarea
+      [(ngModel)]="Comment"
+      name="Comment"
+      #commentCtrl="ngModel"
+      required
+    ></textarea>
   </label>
+  <div class="error-box" *ngIf="commentCtrl.invalid && (commentCtrl.touched || ratingForm.submitted)">
+    Comment is required
+  </div>
 
+  <!-- Buttons -->
   <button type="submit">
     {{ isEditMode ? 'Update Rating' : 'Submit Rating' }}
   </button>
   <button type="button" (click)="cancel()">Cancel</button>
 </form>
+<h2>My Ratings</h2>
+<div *ngFor="let rating of ratings; let i = index" class="rating-card">
+  <p><strong>{{ i + 1 }}.</strong></p>
+  <strong>Product:</strong> {{ rating.Product_name }} <br />
+  <strong>Rating:</strong> {{ rating.rating }} ⭐ <br />
+  <strong>Category:</strong> {{ rating.category }}<br />
+  <strong>Subcategory:</strong> {{ rating.subcategory }}<br />
+  <strong>Comment:</strong> {{ rating.Comment }} <br />
+  <strong>By:</strong> {{ rating.submittedBy }} <br />
 
-<!-- Rating List -->
-
+  <button (click)="editRating(rating)">Edit</button>
+ 
+</div>

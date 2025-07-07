@@ -102,8 +102,8 @@ if (this.isEditMode && this.editId !== null) {
     this.editId = null;
   }
   subcategoriesMap: { [key: string]: string[] } = {
-  electronics: ['Mobiles', 'Laptops', 'TVs'],
-  restaurants: ['Fast Food', 'Fine Dining', 'Cafes'],
+  electronics: ['Mobiles', 'Laptops', 'TV','Tablets','Desktop Computers','Wearables (Smart Watches, Fitness Bands)','Cameras & Photography','Audio Devices (Headphones, Earbuds, Speakers)','Home Theater Systems','Gaming Consoles'],
+  restaurants: ['Italian','Chinese','Indian','Mexican','Japanese','French','Fast Food', 'Fine Dining', 'Cafes'],
   apps: ['Social Media', 'Productivity', 'Games'],
   books: ['Fiction', 'Non-Fiction', 'Comics'],
   movies: ['Action', 'Drama', 'Comedy']
