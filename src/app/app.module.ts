@@ -14,6 +14,12 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 
 import { SubmitratingComponent } from './submitrating/submitrating.component';
+import { UsernameComponent } from './username/username.component';
+import { PasswordComponent } from './password/password.component';
+import { PhonenumberComponent } from './phonenumber/phonenumber.component';
+import { AddressComponent } from './address/address.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 
 
@@ -32,13 +38,19 @@ import { SubmitratingComponent } from './submitrating/submitrating.component';
     AdminDashbordComponent,
     HomeComponent,
    
-    SubmitratingComponent
+    SubmitratingComponent,
+         UsernameComponent,
+         PasswordComponent,
+         PhonenumberComponent,
+         AddressComponent,
+         ForgotPasswordComponent
+         
    
    
   ],
   imports: [
+     AppRoutingModule,
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],

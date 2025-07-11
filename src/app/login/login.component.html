@@ -25,7 +25,7 @@
     [(ngModel)]="credentials.password"
     placeholder="Password"
     required
-    minlength="3"
+    minlength="8"
     #password="ngModel"
   />
   <div *ngIf="password.invalid && password.touched" class="error">
@@ -40,5 +40,6 @@
 
   <!-- Register Redirect -->
   <p>Don't have an account? <a (click)="goToRegister()">Register here</a></p>
+<p><a routerLink="/forgot-password">Forgot Password?</a></p>
 
 </form>

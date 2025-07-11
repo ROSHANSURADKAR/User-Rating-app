@@ -165,7 +165,7 @@ h2 {
   width: 100%;
   margin-bottom: 5px;
   padding: 5px;
-  background-color: #310e52;
+  background-color: #dfee15;
   border: none;
   cursor: pointer;
 }
@@ -196,6 +196,7 @@ h2 {
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .rating-card button {

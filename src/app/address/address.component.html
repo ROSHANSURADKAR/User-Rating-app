@@ -1,0 +1,14 @@
+<p>address works!</p>
+<h2>Change Address</h2>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+
+<form (ngSubmit)="submit()">
+  <label>
+    New Address:
+    <input type="text" [(ngModel)]="newAddress" name="newAddress" required>
+  </label>
+  <br><br>
+  <button type="submit">Change Address</button>
+</form>

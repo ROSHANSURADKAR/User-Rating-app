@@ -10,20 +10,24 @@
 <!-- Top-right Profile -->
 <div class="navbar">
   <div class="profile">
-    <div class="avatar">R</div>
+    <div class="avatar">{{ userInitial }}</div>
+
     <div class="user-dropdown">
       <div class="profile-card">
-        <div class="avatar">R</div>
-        <h1>WELCOME, {{ userName }}</h1>
+        <div class="avatar">{{ userInitial }}</div>
+
+        <h1>WELCOME, {{ userName }} {{ userName1 }}</h1>
         <h3>EMAIL: {{ userEmail }}</h3>
 
         <!-- Settings Option -->
-        <button (click)="showSettings = !showSettings">⚙️ Settings</button>
+        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
 
         <!-- Settings Menu -->
         <div *ngIf="showSettings" class="settings-menu">
-          <button (click)="changeUsername()">Change Username</button>
-          <button (click)="changePassword()">Change Password</button>
+          <button routerLink="/username">Change Username</button>
+<button routerLink="/password">Change Password</button>
+<button routerLink="/phonenumber">Change Phone</button>
+<button routerLink="/address">Change address</button>
         </div><br>
 
         <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>

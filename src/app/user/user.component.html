@@ -61,21 +61,33 @@
   </div>
 
   <!-- Rating -->
-  <label>
-    Rating:
-    <input
-      type="number"
-      [(ngModel)]="rating"
-      name="rating"
-      min="1"
-      max="5"
-      required
-      #ratingCtrl="ngModel"
-    />
-  </label>
-  <div class="error-box" *ngIf="ratingCtrl.invalid && (ratingCtrl.touched || ratingForm.submitted)">
-    Rating is required 1 to 5
-  </div>
+ <label>Rating:</label><br>
+<div class="stars">
+  <span
+    *ngFor="let star of [1,2,3,4,5]"
+    (click)="setRating(star)"
+    (mouseenter)="setHover(star)"
+    (mouseleave)="setHover(null)"
+    [style.cursor]="'pointer'"
+    [style.fontSize]="'24px'"
+    [style.color]="star <= (hover || rating) ? 'gold' : 'gray'"
+  >
+    ★
+  </span>
+</div>
+<!-- Hidden input to bind to form -->
+<input
+  type="number"
+  name="rating"
+  [(ngModel)]="rating"
+  required
+  #ratingCtrl="ngModel"
+  hidden
+/>
+<div class="error-box" *ngIf="ratingCtrl.invalid && (ratingCtrl.touched || ratingForm.submitted)">
+  Rating is required (1 to 5)
+</div>
+
 
   <!-- Comments -->
   <label>

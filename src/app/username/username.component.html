@@ -1,0 +1,20 @@
+<h2>Change Username</h2>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+
+<form (ngSubmit)="submit()">
+  <label>
+    New First Name:
+    <input type="text" [(ngModel)]="newFirstName" name="newFirstName" required>
+  </label>
+  <br><br>
+
+  <label>
+    New Last Name:
+    <input type="text" [(ngModel)]="newLastName" name="newLastName" required>
+  </label>
+  <br><br>
+
+  <button type="submit">Change Username</button>
+</form>

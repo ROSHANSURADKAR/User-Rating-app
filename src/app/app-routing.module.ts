@@ -12,6 +12,11 @@ import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.componen
 import { HomeComponent } from './home/home.component';
 
 import { SubmitratingComponent } from './submitrating/submitrating.component';
+import { UsernameComponent } from './username/username.component';
+import { PasswordComponent } from './password/password.component';
+import { PhonenumberComponent } from './phonenumber/phonenumber.component';
+import { AddressComponent } from './address/address.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -29,8 +34,13 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashbordComponent,  canActivate: [AdminAuthGuard]},
   { path: 'admin-register', component: AdminRegisterComponent },
   { path: 'admin-login', component: AdminLoginComponent },
+  {path:'username',component:UsernameComponent},
+  {path:'password', component:PasswordComponent},
+  {path:'phonenumber', component:PhonenumberComponent},
+  {path:'address', component:AddressComponent},
  
- 
+ { path: 'forgot-password', component: ForgotPasswordComponent }
+
   
   
  

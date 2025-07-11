@@ -385,3 +385,16 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.stars span {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.stars span:hover {
+  transform: scale(1.2);
+}
+.error-box {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}

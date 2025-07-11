@@ -1,0 +1,14 @@
+<p>phonenumber works!</p>
+<h2>Change Phone Number</h2>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+
+<form (ngSubmit)="submit()">
+  <label>
+    New Phone Number:
+    <input type="text" [(ngModel)]="newPhoneNumber" name="newPhoneNumber" required>
+  </label>
+  <br><br>
+  <button type="submit">Change Phone Number</button>
+</form>

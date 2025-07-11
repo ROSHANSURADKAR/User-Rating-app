@@ -1,27 +1,4 @@
- 
- <div class="navbar">
-  <div class="profile">
-    <div class="avatar">R</div>
-    <div class="user-dropdown">
-      <div class="profile-card">
-        <div class="avatar">R</div>
-        <h1>WELCOME, {{ adminName }}</h1>
-        <h3>EMAIL: {{ adminEmail }}</h3>
 
-        <!-- Settings Option -->
-        <button (click)="showSettings = !showSettings">⚙️ Settings</button>
-
-        <!-- Settings Menu -->
-        <div *ngIf="showSettings" class="settings-menu">
-          <button (click)="changeAdminname()">Change Username</button>
-          <button (click)="changePassword()">Change Password</button>
-        </div><br>
-
-        <button  (click)="logout()">Log out</button>
-      </div>
-    </div>
-  </div>
-</div>
  
  
  
@@ -35,6 +12,7 @@
       <thead>
         <tr>
           <th>#</th>
+          
           <th>User Email</th>
           <th>Category</th>
           <th>Subcategory</th>
@@ -47,6 +25,7 @@
       <tbody>
         <tr *ngFor="let user of users; let i = index">
           <td>{{ i + 1 }}</td>
+          
           <td>{{ user.submittedBy }}</td>
           <td>{{ user.category }}</td>
           <td>{{ user.subcategory }}</td>

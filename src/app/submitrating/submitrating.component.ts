@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SubmitratingComponent implements OnInit {
   userName: string = '';
+  userName1: string = '';
   userEmail: string = '';
   showSettings: boolean = false;
 
@@ -25,34 +26,15 @@ export class SubmitratingComponent implements OnInit {
     if (userData) {
       const user = JSON.parse(userData);
       this.userName =user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1);
+      this.userName1 =user.last_name;
       this.userEmail = user.email || '';
     }
 
     this.fetchAllRatings(); // 👈 Correctly moved here
   }
 
-  changeUsername(): void {
-    const newUsername = prompt('Enter new username:');
-    if (newUsername && newUsername.trim() !== '') {
-      this.userName = newUsername.charAt(0).toUpperCase() + newUsername.slice(1);
-
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        const user = JSON.parse(userData);
-        user.first_name = newUsername;
-        localStorage.setItem('user', JSON.stringify(user));
-      }
-
-      alert('Username updated successfully!');
-    }
-  }
-
-  changePassword(): void {
-    const newPassword = prompt('Enter new password:');
-    if (newPassword && newPassword.trim() !== '') {
-      alert('Password change requested. Implement API call here.');
-    }
-  }
+ 
+  
 
   isLoggedIn(): boolean {
     return localStorage.getItem('isLoggedIn') === 'true';
@@ -91,6 +73,9 @@ export class SubmitratingComponent implements OnInit {
       this.fetchAllRatings(); // refresh after delete
     });
   }
+}
+get userInitial(): string {
+  return this.userName ? this.userName.charAt(0).toUpperCase() : '?';
 }
 
 
