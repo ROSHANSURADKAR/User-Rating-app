@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:5000'; // Backend URL
+  
 
   constructor(private http: HttpClient) {}
 
@@ -94,4 +95,5 @@ updateUsername(email: string, first_name: string, last_name: string) {
 
 
 }
+
 
