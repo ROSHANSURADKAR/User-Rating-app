@@ -1,34 +1,35 @@
-.register-container {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+.container {
+  inline-size: 100%;
+  max-inline-size: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2 {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.register-container h2 {
-  margin-bottom: 20px;
-  color: #333;
+label {
+  display: block;
+  margin-block-end: 5px;
 }
 
-.register-container input {
-  width: 90%;
-  padding: 10px;
-  margin: 10px 0;
+input {
+  inline-size: 100%;
+  padding: 8px;
+  margin-block-end: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
+  border-radius: 4px;
 }
 
-.register-container button {
-  width: 95%;
-  padding: 12px;
-  margin-top: 15px;
-  background-color: #007bff;
+button {
+  inline-size: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
   color: white;
   font-size: 16px;
   border: none;
