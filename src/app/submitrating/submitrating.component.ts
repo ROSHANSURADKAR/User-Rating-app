@@ -34,7 +34,14 @@ export class SubmitratingComponent implements OnInit {
   }
 
  
-  
+  getStars(rating: number): string[] {
+  const stars: string[] = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(i <= rating ? '★' : '☆');
+  }
+  return stars;
+}
+
 
   isLoggedIn(): boolean {
     return localStorage.getItem('isLoggedIn') === 'true';

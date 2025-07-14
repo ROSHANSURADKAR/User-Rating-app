@@ -49,7 +49,12 @@
     <p><strong>{{ i + 1 }}.</strong></p>
     <strong>id:</strong> {{ rating.Id }} <br />
     <strong>Product:</strong> {{ rating.Product_name }} <br />
-    <strong>Rating:</strong> {{ rating.rating }} ⭐ <br />
+    <strong>Rating:</strong>
+<span *ngFor="let star of getStars(rating.rating)">
+  <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+</span>
+<br />
+
     <strong>Category:</strong> {{ rating.category }}<br />
     <strong>Subcategory:</strong> {{ rating.subcategory }}<br />
     <strong>Comment:</strong> {{ rating.Comment }} <br />

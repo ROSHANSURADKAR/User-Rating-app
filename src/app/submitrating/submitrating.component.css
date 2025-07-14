@@ -212,3 +212,6 @@ h2 {
 .rating-card button:hover {
   background-color: #c0392b;
 }
+.rating-card span {
+  font-size: 20px;
+}

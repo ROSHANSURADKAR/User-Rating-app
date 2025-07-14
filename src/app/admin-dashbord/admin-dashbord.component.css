@@ -175,3 +175,6 @@ table button:hover {
     font-size: 0.9rem;
   }
 }
+table td span {
+  font-size: 20px;
+}

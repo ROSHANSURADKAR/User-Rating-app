@@ -31,7 +31,12 @@
           <td>{{ user.subcategory }}</td>
           <td>{{ user.Product_name }}</td>
           <td>{{ user.Comment }}</td>
-          <td>{{ user.rating }} ⭐</td>
+          <td>
+  <span *ngFor="let star of getStars(user.rating)">
+    <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+  </span>
+</td>
+
           <td>
             <button (click)="deleteRating(user.id)">Delete</button>
           </td>

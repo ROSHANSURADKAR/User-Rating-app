@@ -47,6 +47,13 @@ export class AdminDashbordComponent implements OnInit {
       alert('Username updated successfully!');
     }
   }
+getStars(rating: number): string[] {
+  const stars: string[] = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(i <= rating ? '★' : '☆');
+  }
+  return stars;
+}
 
   changePassword(): void {
     const newPassword = prompt('Enter new password:');

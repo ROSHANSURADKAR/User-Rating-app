@@ -103,6 +103,15 @@ export class UserComponent implements OnInit {
   setHover(value: number | null) {
     this.hover = value;
   }
+  getStars(rating: number): string[] {
+  const fullStars = Math.min(Math.max(rating, 0), 5);
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+    stars.push(i < fullStars ? '★' : '☆');
+  }
+  return stars;
+}
+
 
   subcategoriesMap: { [key: string]: string[] } = {
     electronics: ['Mobiles', 'Laptops', 'TV', 'Tablets', 'Desktop Computers', 'Wearables (Smart Watches, Fitness Bands)', 'Cameras & Photography', 'Audio Devices (Headphones, Earbuds, Speakers)', 'Home Theater Systems', 'Gaming Consoles'],
