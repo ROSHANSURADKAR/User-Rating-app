@@ -13,6 +13,7 @@ export class AdminRegisterComponent {
   last_name = '';
   email = '';
   phone_number = '';
+  address= '';
   password = '';
   confirm_password = '';
   otp = '';
@@ -21,12 +22,15 @@ export class AdminRegisterComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
   registerAdmin() {
-    const adminData = {  first_name: this.first_name,
+    const adminData = {  
+      first_name: this.first_name,
       last_name: this.last_name,
       email: this.email,
       password: this.password,
       confirm_password: this.confirm_password,
-      phone_number: this.phone_number };
+      phone_number: this.phone_number,
+      address:this.address
+     };
    
       this.apiService.adminRegister(adminData).subscribe(
       (response: any) => {

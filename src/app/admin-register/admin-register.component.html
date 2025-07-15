@@ -38,7 +38,14 @@
       <small *ngIf="phoneCtrl.errors?.['required']">Phone number is required.</small>
       <small *ngIf="phoneCtrl.errors?.['pattern']">Enter a valid 10-digit number.</small>
     </div><br>
-
+<label>
+   Address:
+    <input [(ngModel)]=" address" name=" address" required pattern="^[0-9]{10}$" #addressField="ngModel" />
+  </label>
+  <div *ngIf=" addressField.invalid &&  addressField.touched" class="error">
+    Address is required.
+  </div>
+ 
     <label>
       Password:
       <input [(ngModel)]="password" name="password" required minlength="6" type="password" #passwordCtrl="ngModel" placeholder="Password" />
