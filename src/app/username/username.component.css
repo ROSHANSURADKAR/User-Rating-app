@@ -68,3 +68,12 @@ button[type="submit"]:hover {
   border: 1px solid #f99;
   border-radius: 4px;
 }
+.error {
+  color: red;
+  margin-top: 4px;
+}
+
+.success {
+  color: green;
+  margin-top: 4px;
+}

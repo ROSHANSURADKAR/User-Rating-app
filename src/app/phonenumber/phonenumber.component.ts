@@ -22,12 +22,14 @@ export class PhonenumberComponent {
     }
   }
 
-  submit(): void {
-    if (!this.newPhoneNumber) {
-      this.errorMessage = 'Phone number is required';
-      this.successMessage = '';
-      return;
-    }
+  submit() {
+  this.successMessage = '';
+  this.errorMessage = '';
+
+  if (!this.newPhoneNumber || !/^\d{10}$/.test(this.newPhoneNumber)) {
+    this.errorMessage = 'Please enter a valid 10-digit phone number.';
+    return;
+  }
 
     this.apiService.changePhoneNumber(this.userEmail, this.newPhoneNumber).subscribe({
       next: () => {

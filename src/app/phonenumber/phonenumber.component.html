@@ -1,14 +1,33 @@
-<p>phonenumber works!</p>
 <h2>Change Phone Number</h2>
 
-<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+<!-- Global Messages -->
 
-<form (ngSubmit)="submit()">
+
+<form #phoneForm="ngForm" (ngSubmit)="submit()">
+  
   <label>
     New Phone Number:
-    <input type="text" [(ngModel)]="newPhoneNumber" name="newPhoneNumber" required>
+    <input
+      type="text"
+      [(ngModel)]="newPhoneNumber"
+      name="newPhoneNumber"
+      required
+      pattern="^[0-9]{10}$"
+      #newPhoneCtrl="ngModel"
+    />
   </label>
+
+  <!-- Validation Error Messages -->
+  <div class="error" *ngIf="newPhoneCtrl.invalid && (newPhoneCtrl.touched || phoneForm.submitted)">
+    <div *ngIf="newPhoneCtrl.errors?.['required']">
+      Phone number is required.
+    </div>
+    <div *ngIf="newPhoneCtrl.errors?.['pattern']">
+      Phone number must be exactly 10 digits.
+    </div>
+  </div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
   <br><br>
-  <button type="submit">Change Phone Number</button>
+  <button type="submit" [disabled]="phoneForm.invalid">Change Phone Number</button>
 </form>

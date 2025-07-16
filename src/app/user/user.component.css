@@ -401,3 +401,131 @@ button:hover {
 .rating-card span {
   font-size: 20px;
 }
+/* Top Right Profile Section */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #e7f0fe;
+  position: relative;
+}
+
+.profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #8e44ad;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Dropdown appears on hover */
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 280px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 100;
+  border-radius: 8px;
+}
+
+.profile:hover .user-dropdown {
+  display: block;
+}
+
+/* Profile Card in Dropdown */
+.profile-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.profile-card h1 {
+  margin: 0;
+  font-size: 18px;
+  color: #444;
+}
+
+.profile-card h3 {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+nav{
+  text-align: center;
+}
+
+
+
+
+
+/* Rating Section Title */
+h2 {
+ text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.settings-menu {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.settings-menu button {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #dfee15;
+  border: none;
+  cursor: pointer;
+}
+
+.settings-menu button:hover {
+  background-color: #08e3f3;
+}

@@ -2,6 +2,40 @@
 <nav>
   <a routerLink="/submitrating" *ngIf="isLoggedIn()">Submit Rating</a><br />
 </nav>
+
+<!-- Simple Avatar with Dropdown -->
+<div class="navbar">
+  <div class="profile">
+    <div class="avatar" (click)="toggleDropdown()">{{ userInitial }}</div>
+
+    <div class="user-dropdown" *ngIf="showDropdown">
+      <div class="profile-card">
+        <div class="avatar">{{ userInitial }}</div>
+
+        <h1>WELCOME, {{ userName }} {{ userLastName }}</h1>
+        <h3>EMAIL: {{ userEmail }}</h3>
+
+        <!-- Settings Option -->
+        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+
+        <div *ngIf="showSettings" class="settings-menu">
+          <button routerLink="/username">Change Username</button>
+          <button routerLink="/password">Change Password</button>
+          <button routerLink="/phonenumber">Change Phone</button>
+          <button routerLink="/address">Change Address</button>
+        </div>
+        <br>
+
+        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <!-- Rating Form -->
 <h2>User Ratings</h2>
 <form (ngSubmit)="submitRating()" #ratingForm="ngForm">

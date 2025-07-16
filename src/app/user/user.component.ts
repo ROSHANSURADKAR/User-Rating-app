@@ -8,10 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-
-
 export class UserComponent implements OnInit {
 
+  // 🔹 Avatar/Profile Info
+  userInitial: string = '?';
+  userName: string = '';
+  userLastName: string = '';
+  userEmail: string = '';
+  showDropdown: boolean = false;
+  showSettings: boolean = false;
+
+  // 🔹 Rating Form Data
   ratings: any[] = [];
   product_name: string = '';
   rating: number = 0;
@@ -19,31 +26,53 @@ export class UserComponent implements OnInit {
   category: string = '';
   subcategory: string = '';
   Comment: string = '';
-
-  userName: string = '';
-  userEmail: string = '';
-
   isEditMode: boolean = false;
   editId: number | null = null;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
-      this.userName = user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1);
-      this.userEmail = user.email;
-    }
+    this.loadUserData();
     this.fetchRatings();
   }
 
+  // ✅ Load user data from localStorage
+  loadUserData() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.userInitial = user.first_name ? user.first_name.charAt(0).toUpperCase() : '?';
+      this.userName = user.first_name || '';
+      this.userLastName = user.last_name || '';
+      this.userEmail = user.email || '';
+    }
+  }
+
+  // ✅ Toggle avatar dropdown
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  // ✅ Check login
+  isLoggedIn(): boolean {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  // ✅ Logout
+  logout(): void {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
+
+  // ✅ Fetch Ratings
   fetchRatings(): void {
     this.apiService.getRatings().subscribe((data: any[]) => {
       this.ratings = data.filter((r: any) => r.submittedBy === this.userEmail);
     });
   }
 
+  // ✅ Submit / Update Rating
   submitRating(): void {
     if (!this.rating || this.rating < 1 || this.rating > 5) {
       alert('Rating must be between 1 and 5.');
@@ -58,8 +87,6 @@ export class UserComponent implements OnInit {
       Comment: this.Comment,
       submittedBy: this.userEmail
     };
-
-    console.log('Submitting rating:', ratingData);
 
     if (this.isEditMode && this.editId !== null) {
       this.apiService.updateRating(this.editId, ratingData).subscribe(() => {
@@ -83,9 +110,11 @@ export class UserComponent implements OnInit {
     this.subcategory = rating.subcategory;
     this.Comment = rating.Comment;
   }
+
   cancel(): void {
     this.resetForm();
   }
+
   resetForm(): void {
     this.product_name = '';
     this.rating = 0;
@@ -103,15 +132,15 @@ export class UserComponent implements OnInit {
   setHover(value: number | null) {
     this.hover = value;
   }
-  getStars(rating: number): string[] {
-  const fullStars = Math.min(Math.max(rating, 0), 5);
-  const stars = [];
-  for (let i = 0; i < 5; i++) {
-    stars.push(i < fullStars ? '★' : '☆');
-  }
-  return stars;
-}
 
+  getStars(rating: number): string[] {
+    const fullStars = Math.min(Math.max(rating, 0), 5);
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(i < fullStars ? '★' : '☆');
+    }
+    return stars;
+  }
 
   subcategoriesMap: { [key: string]: string[] } = {
     electronics: ['Mobiles', 'Laptops', 'TV', 'Tablets', 'Desktop Computers', 'Wearables (Smart Watches, Fitness Bands)', 'Cameras & Photography', 'Audio Devices (Headphones, Earbuds, Speakers)', 'Home Theater Systems', 'Gaming Consoles'],
@@ -120,14 +149,4 @@ export class UserComponent implements OnInit {
     books: ['Fiction', 'Non-Fiction', 'Comics'],
     movies: ['Action', 'Drama', 'Comedy']
   };
-
-  isLoggedIn(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  }
-
-  logout(): void {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('user');
-    this.router.navigate(['/login']);
-  }
 }

@@ -60,4 +60,19 @@ input, button {
   margin-top: 5px;
   margin-bottom: 15px;
 }
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.loginmessage {
+  color: green;
+  margin-top: 10px;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 

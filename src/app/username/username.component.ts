@@ -20,11 +20,24 @@ export class UsernameComponent {
     this.errorMessage = '';
     this.successMessage = '';
 
-    if (!this.newFirstName.trim() || !this.newLastName.trim()) {
+    // Trim input
+    const first = this.newFirstName.trim();
+    const last = this.newLastName.trim();
+
+    // Validation: required
+    if (!first || !last) {
       this.errorMessage = 'First name and Last name are required.';
       return;
     }
 
+    // Validation: only letters
+    const letterRegex = /^[a-zA-Z]+$/;
+    if (!letterRegex.test(first) || !letterRegex.test(last)) {
+      this.errorMessage = 'First name and Last name must contain only letters.';
+      return;
+    }
+
+    // Check logged-in user
     const userData = localStorage.getItem('user');
     if (!userData) {
       this.errorMessage = 'User not logged in!';
@@ -34,13 +47,13 @@ export class UsernameComponent {
     const user = JSON.parse(userData);
     const email = user.email;
 
-    // Call backend API
-    this.apiService.updateUsername(email, this.capitalize(this.newFirstName), this.capitalize(this.newLastName))
+    // Call backend to update
+    this.apiService.updateUsername(email, this.capitalize(first), this.capitalize(last))
       .subscribe({
-        next: (res) => {
+        next: () => {
           // Update localStorage
-          user.first_name = this.capitalize(this.newFirstName);
-          user.last_name = this.capitalize(this.newLastName);
+          user.first_name = this.capitalize(first);
+          user.last_name = this.capitalize(last);
           localStorage.setItem('user', JSON.stringify(user));
 
           this.successMessage = 'Username updated successfully!';
@@ -50,12 +63,12 @@ export class UsernameComponent {
         },
         error: (err) => {
           console.error(err);
-          this.errorMessage = 'Failed to update username. Please try again.';
+          this.errorMessage = err?.error?.message || 'Failed to update username. Please try again.';
         }
       });
   }
 
   private capitalize(name: string): string {
-    return name.charAt(0).toUpperCase() + name.slice(1);
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 }

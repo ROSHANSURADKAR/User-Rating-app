@@ -1,20 +1,46 @@
 <h2>Change Username</h2>
 
-<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+<form (ngSubmit)="submit()" #usernameForm="ngForm">
 
-<form (ngSubmit)="submit()">
+  <!-- New First Name -->
   <label>
     New First Name:
-    <input type="text" [(ngModel)]="newFirstName" name="newFirstName" required>
+    <input
+      type="text"
+      [(ngModel)]="newFirstName"
+      name="newFirstName"
+      required
+      pattern="[a-zA-Z]+"
+      #firstNameCtrl="ngModel"
+    >
   </label>
+  <div class="error" *ngIf="firstNameCtrl.invalid && (firstNameCtrl.touched || usernameForm.submitted)">
+    <div *ngIf="firstNameCtrl.errors?.['required']">First name is required.</div>
+    <div *ngIf="firstNameCtrl.errors?.['pattern']">First name must contain only letters.</div>
+  </div>
   <br><br>
 
+  <!-- New Last Name -->
   <label>
     New Last Name:
-    <input type="text" [(ngModel)]="newLastName" name="newLastName" required>
+    <input
+      type="text"
+      [(ngModel)]="newLastName"
+      name="newLastName"
+      required
+      pattern="[a-zA-Z]+"
+      #lastNameCtrl="ngModel"
+    >
   </label>
+  <div class="error" *ngIf="lastNameCtrl.invalid && (lastNameCtrl.touched || usernameForm.submitted)">
+    <div *ngIf="lastNameCtrl.errors?.['required']">Last name is required.</div>
+    <div *ngIf="lastNameCtrl.errors?.['pattern']">Last name must contain only letters.</div>
+  </div>
   <br><br>
+
+  <!-- General Messages -->
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
 
   <button type="submit">Change Username</button>
 </form>

@@ -1,14 +1,43 @@
-
-
 <nav>
-  <a routerLink="/submitrating" >Submit Rating</a><br />
+  <a routerLink="/submitrating">Submit Rating</a><br />
 </nav>
+
+<!-- Simple Avatar with Dropdown -->
+<div class="navbar">
+  <div class="profile">
+    <div class="avatar" (click)="toggleDropdown()">{{ userInitial }}</div>
+
+    <div class="user-dropdown" *ngIf="showDropdown">
+      <div class="profile-card">
+        <div class="avatar">{{ userInitial }}</div>
+
+        <h1>WELCOME, {{ userName }} {{ userLastName }}</h1>
+        <h3>EMAIL: {{ userEmail }}</h3>
+
+        <!-- Settings Option -->
+        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+
+        <div *ngIf="showSettings" class="settings-menu">
+          <button routerLink="/username">Change Username</button>
+          <button routerLink="/password">Change Password</button>
+          <button routerLink="/phonenumber">Change Phone</button>
+          <button routerLink="/address">Change Address</button>
+        </div>
+        <br>
+
+        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="review-page">
   <h2>User Reviews</h2>
   <ul *ngIf="ratings.length > 0; else noReviews">
     <li *ngFor="let rating of ratings">
       <strong>{{ rating.Product_name }}</strong> ({{ rating.rating }}★)  
-      <p>{{ rating.comment }}</p>
+      {{ rating.comment }}
       <span>{{ rating.created_at | date:'medium' }}</span>
     </li>
   </ul>

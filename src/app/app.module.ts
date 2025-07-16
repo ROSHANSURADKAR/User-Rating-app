@@ -26,6 +26,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
          PasswordComponent,
          PhonenumberComponent,
          AddressComponent,
-         ForgotPasswordComponent
+         ForgotPasswordComponent,
+      
          
    
    

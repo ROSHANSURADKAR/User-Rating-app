@@ -1,71 +1,137 @@
-
 <div class="register-container">
   <h2>Admin Registration</h2>
 
   <!-- Registration Form -->
   <form *ngIf="!showOtpBox" #adminForm="ngForm" (ngSubmit)="registerAdmin()">
 
+    <!-- First Name -->
     <label>
       First Name:
-      <input [(ngModel)]="first_name" name="first_name" required #firstNameCtrl="ngModel" placeholder="First Name" />
+      <input
+        [(ngModel)]="first_name"
+        name="first_name"
+        required
+        pattern="[a-zA-Z]+"
+        #firstNameCtrl="ngModel"
+        placeholder="First Name"
+      />
     </label>
-    <div class="error" *ngIf="firstNameCtrl.invalid && firstNameCtrl.touched">
-      First Name is required.
-    </div><br>
+    <div class="error" *ngIf="firstNameCtrl.invalid && (firstNameCtrl.touched || adminForm.submitted)">
+      <small *ngIf="firstNameCtrl.errors?.['required']">First Name is required.</small>
+      <small *ngIf="firstNameCtrl.errors?.['pattern']">Only letters allowed.</small>
+    </div>
+    <br>
 
+    <!-- Last Name -->
     <label>
       Last Name:
-      <input [(ngModel)]="last_name" name="last_name" required #lastNameCtrl="ngModel" placeholder="Last Name" />
+      <input
+        [(ngModel)]="last_name"
+        name="last_name"
+        required
+        pattern="[a-zA-Z]+"
+        #lastNameCtrl="ngModel"
+        placeholder="Last Name"
+      />
     </label>
-    <div class="error" *ngIf="lastNameCtrl.invalid && lastNameCtrl.touched">
-      Last Name is required.
-    </div><br>
+    <div class="error" *ngIf="lastNameCtrl.invalid && (lastNameCtrl.touched || adminForm.submitted)">
+      <small *ngIf="lastNameCtrl.errors?.['required']">Last Name is required.</small>
+      <small *ngIf="lastNameCtrl.errors?.['pattern']">Only letters allowed.</small>
+    </div>
+    <br>
 
+    <!-- Email -->
     <label>
       Email:
-      <input [(ngModel)]="email" name="email" required email #emailCtrl="ngModel" placeholder="Email" />
+      <input
+        [(ngModel)]="email"
+        name="email"
+        required
+        email
+        #emailCtrl="ngModel"
+        placeholder="Email"
+      />
     </label>
-    <div class="error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+    <div class="error" *ngIf="emailCtrl.invalid && (emailCtrl.touched || adminForm.submitted)">
       <small *ngIf="emailCtrl.errors?.['required']">Email is required.</small>
       <small *ngIf="emailCtrl.errors?.['email']">Enter a valid email.</small>
-    </div><br>
+    </div>
+    <br>
 
+    <!-- Phone Number -->
     <label>
       Phone Number:
-      <input [(ngModel)]="phone_number" name="phone_number" required pattern="^[0-9]{10}$" #phoneCtrl="ngModel" placeholder="Phone Number" />
+      <input
+        [(ngModel)]="phone_number"
+        name="phone_number"
+        required
+        pattern="^[0-9]{10}$"
+        #phoneCtrl="ngModel"
+        placeholder="Phone Number"
+      />
     </label>
-    <div class="error" *ngIf="phoneCtrl.invalid && phoneCtrl.touched">
+    <div class="error" *ngIf="phoneCtrl.invalid && (phoneCtrl.touched || adminForm.submitted)">
       <small *ngIf="phoneCtrl.errors?.['required']">Phone number is required.</small>
       <small *ngIf="phoneCtrl.errors?.['pattern']">Enter a valid 10-digit number.</small>
-    </div><br>
-<label>
-   Address:
-    <input [(ngModel)]=" address" name=" address" required pattern="^[0-9]{10}$" #addressField="ngModel" />
-  </label>
-  <div *ngIf=" addressField.invalid &&  addressField.touched" class="error">
-    Address is required.
-  </div>
- 
+    </div>
+    <br>
+
+    <!-- Address -->
+    <label>
+      Address:
+      <input
+        [(ngModel)]="address"
+        name="address"
+        required
+        #addressCtrl="ngModel"
+        placeholder="Address"
+      />
+    </label>
+    <div class="error" *ngIf="addressCtrl.invalid && (addressCtrl.touched || adminForm.submitted)">
+      <small *ngIf="addressCtrl.errors?.['required']">Address is required.</small>
+    </div>
+    <br>
+
+    <!-- Password -->
     <label>
       Password:
-      <input [(ngModel)]="password" name="password" required minlength="6" type="password" #passwordCtrl="ngModel" placeholder="Password" />
+      <input
+        [(ngModel)]="password"
+        name="password"
+        required
+        minlength="6"
+        type="password"
+        #passwordCtrl="ngModel"
+        placeholder="Password"
+      />
     </label>
-    <div class="error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+    <div class="error" *ngIf="passwordCtrl.invalid && (passwordCtrl.touched || adminForm.submitted)">
       <small *ngIf="passwordCtrl.errors?.['required']">Password is required.</small>
       <small *ngIf="passwordCtrl.errors?.['minlength']">Password must be at least 6 characters.</small>
-    </div><br>
+    </div>
+    <br>
 
+    <!-- Confirm Password -->
     <label>
       Confirm Password:
-      <input [(ngModel)]="confirm_password" name="confirm_password" required type="password" #confirmPasswordCtrl="ngModel" placeholder="Confirm Password" />
+      <input
+        [(ngModel)]="confirm_password"
+        name="confirm_password"
+        required
+        type="password"
+        #confirmPasswordCtrl="ngModel"
+        placeholder="Confirm Password"
+      />
     </label>
-    <div class="error" *ngIf="confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched">
-      Confirm Password is required.
+    <div class="error" *ngIf="confirmPasswordCtrl.invalid && (confirmPasswordCtrl.touched || adminForm.submitted)">
+      <small *ngIf="confirmPasswordCtrl.errors?.['required']">Confirm Password is required.</small>
     </div>
-    <div class="error" *ngIf="password !== confirm_password && confirm_password">
-      Passwords do not match.
-    </div><br>
+    <div class="error" *ngIf="password !== confirm_password && confirm_password && (adminForm.submitted || confirmPasswordCtrl.touched)">
+      <small>Passwords do not match.</small>
+    </div>
+    <br>
 
+    <!-- Submit Button -->
     <button type="submit" [disabled]="adminForm.invalid || password !== confirm_password">Register</button>
   </form>
 

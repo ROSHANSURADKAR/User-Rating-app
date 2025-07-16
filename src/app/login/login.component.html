@@ -1,6 +1,6 @@
 <h2>User Login</h2>
 
-<form #loginForm="ngForm" (ngSubmit)="login()" class="login-container">
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="login-container">
 
   <!-- Email Field -->
   <label>Enter Email:</label>
@@ -10,11 +10,12 @@
     [(ngModel)]="credentials.email"
     placeholder="Email"
     required
+    email
     #email="ngModel"
   />
-  <div *ngIf="email.invalid && email.touched" class="error">
+  <div *ngIf="email.invalid && (email.touched || submitted)" class="error">
     <small *ngIf="email.errors?.['required']">Email is required.</small>
-    <small *ngIf="email.errors?.['email']">Enter a valid email.</small>
+    <small *ngIf="email.errors?.['email']">Enter a valid email address.</small>
   </div>
 
   <!-- Password Field -->
@@ -28,18 +29,28 @@
     minlength="8"
     #password="ngModel"
   />
-  <div *ngIf="password.invalid && password.touched" class="error">
+  <div *ngIf="password.invalid && (password.touched || submitted)" class="error">
     <small *ngIf="password.errors?.['required']">Password is required.</small>
     <small *ngIf="password.errors?.['minlength']">
-      Password must be at least 6 characters.
+      Password must be at least 8 characters.
     </small>
+  </div>
+
+  <!-- Global Error Message -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Global Success Message -->
+  <div *ngIf="successMessage" class="success">
+    {{ successMessage }}
   </div>
 
   <!-- Submit Button -->
   <button type="submit" [disabled]="loginForm.invalid">Login</button>
 
-  <!-- Register Redirect -->
+  <!-- Register / Forgot Password Links -->
   <p>Don't have an account? <a (click)="goToRegister()">Register here</a></p>
-<p><a routerLink="/forgot-password">Forgot Password?</a></p>
+  <p><a routerLink="/forgot-password">Forgot Password?</a></p>
 
 </form>

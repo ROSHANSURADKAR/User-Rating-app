@@ -1,85 +1,62 @@
-form, .otp-section {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  font-family: 'Segoe UI', sans-serif;
-}
-
 h2, h3 {
   text-align: center;
-  margin-bottom: 20px;
   color: #333;
 }
 
-form label {
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+label {
   display: block;
-  font-weight: 600;
-  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: bold;
   color: #444;
 }
 
-form input {
+input {
   width: 100%;
-  padding: 10px 12px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
+  padding: 8px;
+  margin-top: 4px;
   box-sizing: border-box;
-}
-
-form input:focus {
-  border-color: #007bff;
-  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background-color: #007bff;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #4CAF50;
   color: white;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
-  margin-top: 20px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
 }
 
-.otp-section {
-  max-width: 400px;
-  margin: 40px auto;
-  text-align: center;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background-color: #fafafa;
-}
- a {
-  color: #007bff;
-  text-decoration: none;
-  cursor: pointer;
-}
-.otp-section input {
-  margin: 10px 0;
-  padding: 10px;
-  width: 80%;
-  font-size: 16px;
-}
 .error-box {
   color: red;
-  border: 1px solid red;
-  padding: 4px 8px;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  background-color: #ffe6e6;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.success-box {
+  color: green;
+  text-align: center;
+  margin: 10px 0;
+}
+
+a {
+  color: #007BFF;
+  cursor: pointer;
+  text-decoration: underline;
 }

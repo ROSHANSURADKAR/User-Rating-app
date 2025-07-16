@@ -71,3 +71,33 @@ input, button {
   margin-top: 5px;
   margin-bottom: 15px;
 }
+.register-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.register-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 15px;
+}
+
+.error {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 4px;
+}

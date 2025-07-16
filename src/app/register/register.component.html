@@ -1,54 +1,77 @@
-<h2>User Register</h2>
+<h2>User Registration</h2>
 
+<!-- General error message -->
+<div *ngIf="errorMessage" class="error-box">{{ errorMessage }}</div>
+<div *ngIf="otpSent && !errorMessage" class="success-box">
+  An OTP has been sent to {{ emailForOtp }}. Please enter it below.
+</div>
+
+<!-- Registration Form -->
 <form *ngIf="!otpSent" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-  
   <!-- First Name -->
-  <label>First Name:</label>
-  <input [(ngModel)]="user.first_name" name="first_name" #firstName="ngModel" required>
-  <div class="error-box" *ngIf="(firstName.invalid && (firstName.touched || submitted))">
-    First name is required
+  <label>
+    First Name:
+    <input [(ngModel)]="user.first_name" name="first_name" required pattern="[a-zA-Z]+" #firstName="ngModel">
+  </label>
+  <div class="error-box" *ngIf="firstName.invalid && (firstName.touched || submitted)">
+    First name is required and must contain only letters.
   </div>
 
   <!-- Last Name -->
-  <label>Last Name:</label>
-  <input [(ngModel)]="user.last_name" name="last_name" #lastName="ngModel" required>
-  <div class="error-box" *ngIf="(lastName.invalid && (lastName.touched || submitted))">
-    Last name is required
+  <label>
+    Last Name:
+    <input [(ngModel)]="user.last_name" name="last_name" required pattern="[a-zA-Z]+" #lastName="ngModel">
+  </label>
+  <div class="error-box" *ngIf="lastName.invalid && (lastName.touched || submitted)">
+    Last name is required and must contain only letters.
   </div>
 
   <!-- Email -->
-  <label>Email:</label>
-  <input [(ngModel)]="user.email" name="email" #email="ngModel" type="email" required>
-  <div class="error-box" *ngIf="(email.invalid && (email.touched || submitted))">
-    Valid email is required
+  <label>
+    Email:
+    <input type="email" [(ngModel)]="user.email" name="email" required #email="ngModel">
+  </label>
+  <div class="error-box" *ngIf="email.invalid && (email.touched || submitted)">
+    A valid email is required.
   </div>
 
   <!-- Password -->
-  <label>Password:</label>
-  <input [(ngModel)]="user.password" name="password" #password="ngModel" type="password" required>
-  <div class="error-box" *ngIf="(password.invalid && (password.touched || submitted))">
-    Password is required
+  <label>
+    Password:
+    <input type="password" [(ngModel)]="user.password" name="password" required minlength="6" #password="ngModel">
+  </label>
+  <div class="error-box" *ngIf="password.invalid && (password.touched || submitted)">
+    Password is required and must be at least 6 characters.
   </div>
 
   <!-- Confirm Password -->
-  <label>Confirm Password:</label>
-  <input [(ngModel)]="user.confirm_password" name="confirm_password" #confirmPassword="ngModel" type="password" required>
-  <div class="error-box" *ngIf="(confirmPassword.invalid && (confirmPassword.touched || submitted))">
-    Confirm password is required
+  <label>
+    Confirm Password:
+    <input type="password" [(ngModel)]="user.confirm_password" name="confirm_password" required #confirmPassword="ngModel">
+  </label>
+  <div class="error-box" *ngIf="confirmPassword.invalid && (confirmPassword.touched || submitted)">
+    Confirm password is required.
+  </div>
+  <div class="error-box" *ngIf="user.password !== user.confirm_password && submitted">
+    Passwords do not match.
   </div>
 
   <!-- Address -->
-  <label>Address:</label>
-  <input [(ngModel)]="user.address" name="address" #address="ngModel" required>
-  <div class="error-box" *ngIf="(address.invalid && (address.touched || submitted))">
-    Address is required
+  <label>
+    Address:
+    <input [(ngModel)]="user.address" name="address" required #address="ngModel">
+  </label>
+  <div class="error-box" *ngIf="address.invalid && (address.touched || submitted)">
+    Address is required.
   </div>
 
   <!-- Phone Number -->
-  <label>Phone Number:</label>
-  <input [(ngModel)]="user.phone_number" name="phone_number" #phone="ngModel" required>
-  <div class="error-box" *ngIf="(phone.invalid && (phone.touched || submitted))">
-    Phone number is required
+  <label>
+    Phone Number:
+    <input [(ngModel)]="user.phone_number" name="phone_number" required pattern="[0-9]{6,15}" #phone="ngModel">
+  </label>
+  <div class="error-box" *ngIf="phone.invalid && (phone.touched || submitted)">
+    Phone number is required and must contain only digits (6-15 digits).
   </div>
 
   <button type="submit">Register</button>
@@ -58,7 +81,7 @@
 
 <!-- OTP Section -->
 <div *ngIf="otpSent">
-  <h3>Enter OTP sent to email</h3>
-  <input [(ngModel)]="otp" placeholder="OTP">
+  <h3>Enter OTP sent to your email</h3>
+  <input [(ngModel)]="otp" placeholder="Enter OTP" type="text">
   <button (click)="verifyOtp()">Verify OTP</button>
 </div>
