@@ -144,19 +144,35 @@
   <button type="button" (click)="cancel()">Cancel</button>
 </form>
 <h2>My Ratings</h2>
-<div *ngFor="let rating of ratings; let i = index" class="rating-card">
-  <p><strong>{{ i + 1 }}.</strong></p>
-  <strong>Product:</strong> {{ rating.Product_name }} <br />
- <strong>Rating:</strong>
-<span *ngFor="let star of getStars(rating.rating); let idx = index">
-  <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
-</span>
-<br />
-  <strong>Category:</strong> {{ rating.category }}<br />
-  <strong>Subcategory:</strong> {{ rating.subcategory }}<br />
-  <strong>Comment:</strong> {{ rating.Comment }} <br />
-  <strong>By:</strong> {{ rating.submittedBy }} <br />
-
-  <button (click)="editRating(rating)">Edit</button>
- 
-</div>
+<table class="ratings-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Product</th>
+      <th>Rating</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+      <th>Comment</th>
+      <th>By</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rating of ratings; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ rating.Product_name }}</td>
+      <td>
+        <span *ngFor="let star of getStars(rating.rating)">
+          <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+        </span>
+      </td>
+      <td>{{ rating.category }}</td>
+      <td>{{ rating.subcategory }}</td>
+      <td>{{ rating.Comment }}</td>
+      <td>{{ rating.submittedBy }}</td>
+      <td>
+        <button (click)="editRating(rating)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
   // ✅ Submit / Update Rating
   submitRating(): void {
     if (!this.rating || this.rating < 1 || this.rating > 5) {
-      alert('Rating must be between 1 and 5.');
+      
       return;
     }
 
@@ -141,7 +141,16 @@ export class UserComponent implements OnInit {
     }
     return stars;
   }
-
+getStarIcon(star: number): string {
+  const currentRating = this.hover ?? this.rating;
+  if (currentRating >= star) {
+    return '<span style="color: gold;">&#9733;</span>'; // full star
+  } else if (currentRating >= star - 0.5) {
+    return '<span style="color: gold;">&#189;</span>'; // half-star (approx)
+  } else {
+    return '<span style="color: gray;">&#9734;</span>'; // empty star
+  }
+}
   subcategoriesMap: { [key: string]: string[] } = {
     electronics: ['Mobiles', 'Laptops', 'TV', 'Tablets', 'Desktop Computers', 'Wearables (Smart Watches, Fitness Bands)', 'Cameras & Photography', 'Audio Devices (Headphones, Earbuds, Speakers)', 'Home Theater Systems', 'Gaming Consoles'],
     restaurants: ['Italian', 'Chinese', 'Indian', 'Mexican', 'Japanese', 'French', 'Fast Food', 'Fine Dining', 'Cafes'],
