@@ -1,178 +1,171 @@
-
-<nav>
-  <a routerLink="/submitrating" *ngIf="isLoggedIn()">Submit Rating</a><br />
+<!-- Navigation / Sidebar -->
+<nav class="sidebar" *ngIf="isLoggedIn()">
+  <h2 class="logo">User Rating App</h2>
+  <a routerLink="/submitrating">➕ Submit Rating</a>
 </nav>
 
-<!-- Simple Avatar with Dropdown -->
-<div class="navbar">
-  <div class="profile">
-    <div class="avatar" (click)="toggleDropdown()">{{ userInitial }}</div>
+<!-- Main Layout -->
+<div class="main-layout">
 
-    <div class="user-dropdown" *ngIf="showDropdown">
-      <div class="profile-card">
-        <div class="avatar">{{ userInitial }}</div>
+  <!-- Top Navbar with Avatar -->
+  <div class="navbar">
+    <div class="profile">
+      <div class="avatar" (click)="toggleDropdown()">{{ userInitial }}</div>
 
-        <h1>WELCOME, {{ userName }} {{ userLastName }}</h1>
-        <h3>EMAIL: {{ userEmail }}</h3>
+      <!-- Dropdown -->
+      <div class="user-dropdown" *ngIf="showDropdown">
+        <div class="profile-card">
+          <div class="avatar">{{ userInitial }}</div>
+          <h1>WELCOME, {{ userName }} {{ userLastName }}</h1>
+          <h3>EMAIL: {{ userEmail }}</h3>
 
-        <!-- Settings Option -->
-        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+          <!-- Settings -->
+          <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+          <div *ngIf="showSettings" class="settings-menu">
+            <button routerLink="/username">Change Username</button>
+            <button routerLink="/password">Change Password</button>
+            <button routerLink="/phonenumber">Change Phone</button>
+            <button routerLink="/address">Change Address</button>
+          </div>
 
-        <div *ngIf="showSettings" class="settings-menu">
-          <button routerLink="/username">Change Username</button>
-          <button routerLink="/password">Change Password</button>
-          <button routerLink="/phonenumber">Change Phone</button>
-          <button routerLink="/address">Change Address</button>
+          <button *ngIf="isLoggedIn()" (click)="logout()" class="logout-btn">🚪 Log out</button>
         </div>
-        <br>
-
-        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- Rating Form -->
+  <section class="form-section">
+    <h2>{{ isEditMode ? 'Update Rating' : 'Submit a Rating' }}</h2>
+    <form (ngSubmit)="submitRating()" #ratingForm="ngForm">
 
+      <!-- Category -->
+      <label for="category">Choose a category:</label>
+      <select
+        id="category"
+        [(ngModel)]="category"
+        name="category"
+        required
+        #categoryCtrl="ngModel"
+      >
+        <option value="">--Select a Category--</option>
+        <option value="electronics">Electronics</option>
+        <option value="restaurants">Restaurants</option>
+        <option value="apps">Mobile Apps</option>
+        <option value="books">Books</option>
+        <option value="movies">Movies</option>
+      </select>
+      <div class="error-box" *ngIf="categoryCtrl.invalid && (categoryCtrl.touched || ratingForm.submitted)">
+        Category is required
+      </div>
 
+      <!-- Subcategory -->
+      <div *ngIf="category && subcategoriesMap[category]">
+        <label for="subcategory">Choose a subcategory:</label>
+        <select
+          id="subcategory"
+          [(ngModel)]="subcategory"
+          name="subcategory"
+          required
+          #subcategoryCtrl="ngModel"
+        >
+          <option value="">--Select a Subcategory--</option>
+          <option *ngFor="let sub of subcategoriesMap[category]" [value]="sub">
+            {{ sub }}
+          </option>
+        </select>
+        <div class="error-box" *ngIf="subcategoryCtrl.invalid && (subcategoryCtrl.touched || ratingForm.submitted)">
+          Subcategory is required
+        </div>
+      </div>
 
+      <!-- Product Name -->
+      <label>
+        Product Name:
+        <input
+          type="text"
+          [(ngModel)]="product_name"
+          name="Product_name"
+          required
+          #productName="ngModel"
+        />
+      </label>
+      <div class="error-box" *ngIf="productName.invalid && (productName.touched || ratingForm.submitted)">
+        Product name is required
+      </div>
 
-<!-- Rating Form -->
-<h2>User Ratings</h2>
-<form (ngSubmit)="submitRating()" #ratingForm="ngForm">
-  <!-- Category -->
-  <label for="category">Choose a category:</label>
-  <select
-    id="category"
-    [(ngModel)]="category"
-    name="category"
-    required
-    #categoryCtrl="ngModel"
-  >
-    <option value="">--Select a Category--</option>
-    <option value="electronics">Electronics</option>
-    <option value="restaurants">Restaurants</option>
-    <option value="apps">Mobile Apps</option>
-    <option value="books">Books</option>
-    <option value="movies">Movies</option>
-  </select>
-  <div class="error-box" *ngIf="categoryCtrl.invalid && (categoryCtrl.touched || ratingForm.submitted)">
-    Category is required
-  </div>
-
-  <!-- Subcategory -->
-  <div *ngIf="category && subcategoriesMap[category]">
-    <label for="subcategory">Choose a subcategory:</label>
-    <select
-      id="subcategory"
-      [(ngModel)]="subcategory"
-      name="subcategory"
-      required
-      #subcategoryCtrl="ngModel"
-    >
-      <option value="">--Select a Subcategory--</option>
-      <option *ngFor="let sub of subcategoriesMap[category]" [value]="sub">
-        {{ sub }}
-      </option>
-    </select>
-    <div class="error-box" *ngIf="subcategoryCtrl.invalid && (subcategoryCtrl.touched || ratingForm.submitted)">
-      Subcategory is required
-    </div>
-  </div>
-
-  <!-- Product Name -->
-  <label>
-    Product Name:
-    <input
-      type="text"
-      [(ngModel)]="product_name"
-      name="Product_name"
-      required
-      #productName="ngModel"
-    />
-  </label>
-  <div class="error-box" *ngIf="productName.invalid && (productName.touched || ratingForm.submitted)">
-    Product name is required
-  </div>
-
-  <!-- Rating -->
- <label>Rating:</label><br>
-<div class="stars">
-  <span
-    *ngFor="let star of [1,2,3,4,5]"
-    (click)="setRating(star)"
-    (mouseenter)="setHover(star)"
-    (mouseleave)="setHover(null)"
-    [style.cursor]="'pointer'"
-    [style.fontSize]="'24px'"
-    [style.color]="star <= (hover || rating) ? 'gold' : 'gray'"
-  >
-    ★
-  </span>
-</div>
-<!-- Hidden input to bind to form -->
-<input
-  type="number"
-  name="rating"
-  [(ngModel)]="rating"
-  required
-  #ratingCtrl="ngModel"
-  hidden
-/>
-<div class="error-box" *ngIf="ratingCtrl.invalid && (ratingCtrl.touched || ratingForm.submitted)">
-  Rating is required (1 to 5)
-</div>
-
-
-  <!-- Comments -->
-  <label>
-    Comments:
-    <textarea
-      [(ngModel)]="Comment"
-      name="Comment"
-      #commentCtrl="ngModel"
-      required
-    ></textarea>
-  </label>
-  <div class="error-box" *ngIf="commentCtrl.invalid && (commentCtrl.touched || ratingForm.submitted)">
-    Comment is required
-  </div>
-
-  <!-- Buttons -->
-  <button type="submit">
-    {{ isEditMode ? 'Update Rating' : 'Submit Rating' }}
-  </button>
-  <button type="button" (click)="cancel()">Cancel</button>
-</form>
-<h2>My Ratings</h2>
-<table class="ratings-table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Product</th>
-      <th>Rating</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th>Comment</th>
-      <th>By</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rating of ratings; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ rating.Product_name }}</td>
-      <td>
-        <span *ngFor="let star of getStars(rating.rating)">
-          <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+      <!-- Rating -->
+      <label>Rating:</label>
+      <div class="stars">
+        <span
+          *ngFor="let star of [1,2,3,4,5]"
+          (click)="setRating(star)"
+          (mouseenter)="setHover(star)"
+          (mouseleave)="setHover(null)"
+          [style.cursor]="'pointer'"
+          [style.fontSize]="'28px'"
+          [style.color]="star <= (hover || rating) ? 'gold' : 'gray'"
+        >
+          ★
         </span>
-      </td>
-      <td>{{ rating.category }}</td>
-      <td>{{ rating.subcategory }}</td>
-      <td>{{ rating.Comment }}</td>
-      <td>{{ rating.submittedBy }}</td>
-      <td>
-        <button (click)="editRating(rating)">Edit</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+      <input type="number" name="rating" [(ngModel)]="rating" required #ratingCtrl="ngModel" hidden />
+      <div class="error-box" *ngIf="ratingCtrl.invalid && (ratingCtrl.touched || ratingForm.submitted)">
+        Rating is required (1 to 5)
+      </div>
+
+      <!-- Comments -->
+      <label>
+        Comments:
+        <textarea [(ngModel)]="Comment" name="Comment" #commentCtrl="ngModel" required></textarea>
+      </label>
+      <div class="error-box" *ngIf="commentCtrl.invalid && (commentCtrl.touched || ratingForm.submitted)">
+        Comment is required
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-buttons">
+        <button type="submit">{{ isEditMode ? 'Update Rating' : 'Submit Rating' }}</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Ratings Table -->
+  <section class="ratings-section">
+    <h2>My Ratings</h2>
+    <table class="ratings-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Rating</th>
+          <th>Category</th>
+          <th>Subcategory</th>
+          <th>Comment</th>
+          <th>By</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rating of ratings; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ rating.Product_name }}</td>
+          <td>
+            <span *ngFor="let star of getStars(rating.rating)">
+              <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+            </span>
+          </td>
+          <td>{{ rating.category }}</td>
+          <td>{{ rating.subcategory }}</td>
+          <td>{{ rating.Comment }}</td>
+          <td>{{ rating.submittedBy }}</td>
+          <td>
+            <button (click)="editRating(rating)">✏️ Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

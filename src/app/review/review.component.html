@@ -1,21 +1,24 @@
-<nav>
-  <a routerLink="/submitrating">Submit Rating</a><br />
-</nav>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/submitrating" class="nav-link">Submit Rating</a>
+  </div>
 
-<!-- Simple Avatar with Dropdown -->
-<div class="navbar">
+  <!-- Profile Avatar -->
   <div class="profile">
     <div class="avatar" (click)="toggleDropdown()">{{ userInitial }}</div>
 
+    <!-- Dropdown -->
     <div class="user-dropdown" *ngIf="showDropdown">
       <div class="profile-card">
-        <div class="avatar">{{ userInitial }}</div>
-
+        <div class="avatar large">{{ userInitial }}</div>
         <h1>WELCOME, {{ userName }} {{ userLastName }}</h1>
         <h3>EMAIL: {{ userEmail }}</h3>
 
-        <!-- Settings Option -->
-        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+        <!-- Settings -->
+        <button class="settings-btn" (click)="showSettings = !showSettings">
+          ⚙️ Manage your account
+        </button>
 
         <div *ngIf="showSettings" class="settings-menu">
           <button routerLink="/username">Change Username</button>
@@ -23,26 +26,49 @@
           <button routerLink="/phonenumber">Change Phone</button>
           <button routerLink="/address">Change Address</button>
         </div>
-        <br>
 
-        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+        <button *ngIf="isLoggedIn()" (click)="logout()" class="logout-btn">
+          Log out
+        </button>
       </div>
     </div>
   </div>
-</div>
+</nav>
 
+<!-- Main Section -->
+<div class="main-container">
+  <h1>Welcome to User Rating App!</h1>
+  <p class="subtitle">Start by submitting or viewing ratings</p>
 
-<div class="review-page">
-  <h2>User Reviews</h2>
-  <ul *ngIf="ratings.length > 0; else noReviews">
-    <li *ngFor="let rating of ratings">
-      <strong>{{ rating.Product_name }}</strong> ({{ rating.rating }}★)  
-      {{ rating.comment }}
-      <span>{{ rating.created_at | date:'medium' }}</span>
-    </li>
-  </ul>
+  <!-- Dashboard Cards -->
+  <div class="cards">
+    <div class="card primary">
+      <h2>Add Rating</h2>
+      <p>Submit a new rating for products or services.</p>
+      <button routerLink="/submitrating">Add now →</button>
+    </div>
 
-  <ng-template #noReviews>
-    <p>No reviews yet. Be the first to rate!</p>
-  </ng-template>
+    <div class="card secondary">
+      <h2>View Ratings</h2>
+      <p>Browse and manage all submitted ratings.</p>
+      <button routerLink="/ratings">View now →</button>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="review-page">
+    <h2>User Reviews</h2>
+    <ul *ngIf="ratings.length > 0; else noReviews">
+      <li *ngFor="let rating of ratings">
+        <strong>{{ rating.Product_name }}</strong> 
+        <span class="stars">({{ rating.rating }}★)</span>
+        <p>{{ rating.comment }}</p>
+        <span class="date">{{ rating.created_at | date:'medium' }}</span>
+      </li>
+    </ul>
+
+    <ng-template #noReviews>
+      <p class="no-reviews">No reviews yet. Be the first to rate!</p>
+    </ng-template>
+  </div>
 </div>

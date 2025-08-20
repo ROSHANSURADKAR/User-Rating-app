@@ -1,64 +1,91 @@
+<!-- Dashboard Layout -->
+<div class="dashboard">
 
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">User Rating App</h2>
+    <nav>
+      <a routerLink="/user" *ngIf="isLoggedIn()">🏠 User Home</a>
+      <a routerLink="/reviews" *ngIf="isLoggedIn()">⭐ View Reviews</a>
+    </nav>
+  </aside>
 
-<!-- Navigation -->
-<nav>
-  <a routerLink="/user" *ngIf="isLoggedIn()">User Home</a><br />
-  <a routerLink="/reviews" *ngIf="isLoggedIn()">View Reviews</a><br />
-  
-</nav>
-
-<!-- Top-right Profile -->
-<div class="navbar">
-  <div class="profile">
-    <div class="avatar">{{ userInitial }}</div>
-
-    <div class="user-dropdown">
-      <div class="profile-card">
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Top Navbar with Profile -->
+    <div class="navbar">
+      <div class="profile">
         <div class="avatar">{{ userInitial }}</div>
+        <div class="dropdown">
+          <div class="profile-card">
+            <div class="avatar">{{ userInitial }}</div>
+            <h1>WELCOME, {{ userName }} {{ userName1 }}</h1>
+            <h3>EMAIL: {{ userEmail }}</h3>
 
-        <h1>WELCOME, {{ userName }} {{ userName1 }}</h1>
-        <h3>EMAIL: {{ userEmail }}</h3>
+            <!-- Settings -->
+            <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
+            <div *ngIf="showSettings" class="settings-menu">
+              <button routerLink="/username">Change Username</button>
+              <button routerLink="/password">Change Password</button>
+              <button routerLink="/phonenumber">Change Phone</button>
+              <button routerLink="/address">Change Address</button>
+            </div>
 
-        <!-- Settings Option -->
-        <button (click)="showSettings = !showSettings">⚙️ Manage your account</button>
-
-        <!-- Settings Menu -->
-        <div *ngIf="showSettings" class="settings-menu">
-          <button routerLink="/username">Change Username</button>
-<button routerLink="/password">Change Password</button>
-<button routerLink="/phonenumber">Change Phone</button>
-<button routerLink="/address">Change address</button>
-        </div><br>
-
-        <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+            <button *ngIf="isLoggedIn()" (click)="logout()" class="logout-btn">🚪 Log out</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<h2 >All Ratings</h2>
 
-<div class="ratings-container">
-  <input 
-    type="text" 
-    placeholder="Search by product name, user, or comment" 
-    [(ngModel)]="searchQuery"
-    (input)="searchRatings()" 
-  />
+    <!-- Welcome Section -->
+    <section class="welcome">
+      <h1>Welcome to User Rating App</h1>
+      <p>Manage ratings, reviews, and your account settings.</p>
+    </section>
 
-  <div *ngFor="let rating of filteredRatings; let i = index" class="rating-card">
-    <p><strong>{{ i + 1 }}.</strong></p>
-    <strong>id:</strong> {{ rating.Id }} <br />
-    <strong>Product:</strong> {{ rating.Product_name }} <br />
-    <strong>Rating:</strong>
-<span *ngFor="let star of getStars(rating.rating)">
-  <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
-</span>
-<br />
+    <!-- Action Cards -->
+    <section class="cards">
+      <div class="card primary">
+        <h2>Add Rating</h2>
+        <p>Submit a new rating for products or services.</p>
+        <button routerLink="/user">➕ Add Now</button>
+      </div>
 
-    <strong>Category:</strong> {{ rating.category }}<br />
-    <strong>Subcategory:</strong> {{ rating.subcategory }}<br />
-    <strong>Comment:</strong> {{ rating.Comment }} <br />
-    <strong>By:</strong> {{ rating.submittedBy }} <br />
-    <button (click)="deleteRating(rating.Id)">Delete</button>
-  </div>
+      <div class="card secondary">
+        <h2>View Ratings</h2>
+        <p>Browse all ratings submitted by users.</p>
+        <button routerLink="/reviews">👀 View Now</button>
+      </div>
+    </section>
+
+    <!-- Ratings List -->
+    <section class="ratings">
+      <h2>All Ratings</h2>
+
+      <input 
+        type="text" 
+        placeholder="Search by product, user, or comment" 
+        [(ngModel)]="searchQuery"
+        (input)="searchRatings()" 
+      />
+
+      <div *ngFor="let rating of filteredRatings; let i = index" class="rating-card">
+        <p><strong>{{ i + 1 }}.</strong></p>
+        <strong>ID:</strong> {{ rating.Id }} <br />
+        <strong>Product:</strong> {{ rating.Product_name }} <br />
+        <strong>Rating:</strong>
+        <span *ngFor="let star of getStars(rating.rating)">
+          <span [style.color]="star === '★' ? 'gold' : 'gray'">{{ star }}</span>
+        </span>
+        <br />
+        <strong>Category:</strong> {{ rating.category }} <br />
+        <strong>Subcategory:</strong> {{ rating.subcategory }} <br />
+        <strong>Comment:</strong> {{ rating.Comment }} <br />
+        <strong>By:</strong> {{ rating.submittedBy }} <br />
+        <button (click)="deleteRating(rating.Id)" class="delete-btn">🗑 Delete</button>
+      </div>
+    </section>
+
+  </main>
 </div>

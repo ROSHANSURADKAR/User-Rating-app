@@ -1,215 +1,150 @@
-form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #f5f7fa;
+  border-right: 1px solid #ddd;
+  padding: 9px;
+  float: left;
+  height: 100vh;
 }
-
-label {
+.sidebar .logo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.sidebar a {
   display: block;
-  margin: 12px 0 4px;
-  font-weight: bold;
-}
-
-input[type="text"],
-select,
-textarea {
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-button {
-  margin-top: 10px;
-  margin-right: 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.stars {
-  display: flex;
-  gap: 4px;
-}
-
-.error-box {
-  color: red;
-  font-size: 13px;
-  margin-top: 5px;
-}
-
-
-.stars span {
-  transition: color 0.3s;
-}
-
-/* Rating cards */
-.ratings-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 16px;
-  font-family: Arial, sans-serif;
-}
-
-.ratings-table th,
-.ratings-table td {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  text-align: left;
-}
-
-.ratings-table th {
-  background-color: #f0f0f0;
-}
-
-.ratings-table tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-.ratings-table button {
-  padding: 4px 10px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.ratings-table button:hover {
-  background-color: #0056b3;
-}
-
-
-nav {
-  padding: 10px 20px;
-  background-color: #e7f0fe;
-  display: flex;
-  justify-content: flex-start;
-  gap: 15px;
-}
-
-nav a,
-nav button {
+  margin: 12px 0;
   text-decoration: none;
-  color: #1a73e8;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+.sidebar a:hover {
+  color: #007bff;
 }
 
+/* Main layout */
+.main-layout {
+  margin-left: 220px;
+  padding: 20px;
+}
 
-/* Top Right Profile Section */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 20px;
-  background-color: #e7f0fe;
-  position: relative;
+  margin-bottom: 20px;
 }
-
-.profile {
-  position: relative;
-  cursor: pointer;
-}
-
 .avatar {
-  width: 40px;
-  height: 40px;
-  background-color: #8e44ad;
+  background: #007bff;
   color: white;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+  padding: 10px 15px;
   font-weight: bold;
-}
-
-/* Dropdown appears on hover */
-.user-dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 40px;
-  width: 280px;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  z-index: 100;
-  border-radius: 8px;
-}
-
-.profile:hover .user-dropdown {
-  display: block;
-}
-
-/* Profile Card in Dropdown */
-.profile-card h2 {
-  margin: 0 0 10px 0;
-  font-size: 20px;
-  color: #333;
-}
-
-.profile-card h1 {
-  margin: 0;
-  font-size: 18px;
-  color: #444;
-}
-
-.profile-card h3 {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #666;
-}
-nav{
-  text-align: center;
-}
-
-/* Rating Section Title */
-h2 {
- text-align: center;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-.settings-menu {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.settings-menu button {
-  display: block;
-  width: 100%;
-  margin-bottom: 5px;
-  padding: 5px;
-  background-color: #dfee15;
-  border: none;
   cursor: pointer;
 }
+.user-dropdown {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.profile-card {
+  text-align: center;
+}
+.settings-menu button,
+.logout-btn {
+  display: block;
+  margin: 6px 0;
+  width: 100%;
+  background: #f0f0f0;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+.settings-menu button:hover,
+.logout-btn:hover {
+  background: #ddd;
+}
 
-.settings-menu button:hover {
-  background-color: #08e3f3;
+/* Form */
+.form-section {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+.form-section h2 {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 500;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+textarea {
+  min-height: 80px;
+}
+.error-box {
+  color: red;
+  font-size: 12px;
+}
+.form-buttons {
+  margin-top: 20px;
+}
+.form-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.form-buttons button[type="submit"] {
+  background: #007bff;
+  color: white;
+}
+.form-buttons button[type="button"] {
+  background: #ddd;
+}
+
+/* Ratings Table */
+.ratings-section {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+}
+.ratings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ratings-table th, .ratings-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.ratings-table th {
+  background: #f9f9f9;
+  text-align: left;
+}
+.ratings-table button {
+  padding: 4px 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ratings-table button:hover {
+  background: #0056b3;
 }
